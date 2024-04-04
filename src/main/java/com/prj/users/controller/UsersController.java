@@ -53,6 +53,7 @@ public class UsersController {
 			return mv;
 		}
 		
+
 		/*
 		@RequestMapping("/Delete")
 		public ModelAndView delete() {
@@ -62,8 +63,4 @@ public class UsersController {
 			return mv;
 		}
 		*/
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> develop

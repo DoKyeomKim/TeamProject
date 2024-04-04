@@ -28,7 +28,7 @@
 	 <tr>
 	   <td colspan="2">
 	    <input type="submit" value="로그인" />
-	    <a href="/Joins/Join2">회원가입</a>
+	    <a href="/Users/WriteForm">회원가입</a>
 	   </td>
 	 </tr>
 	
