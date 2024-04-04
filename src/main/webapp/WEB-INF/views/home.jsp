@@ -99,7 +99,7 @@
                <option>css</option>
             </select> 
             <select>
-               <option>경력</option>
+               <option>경1력</option>
                <option>신입</option>
                <option>1~3년</option>
                <option>3~5년</option>
