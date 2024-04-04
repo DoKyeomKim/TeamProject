@@ -114,10 +114,9 @@ SELECT * FROM C_RESUME;
 
 
 --------------------------------------------------------------------------------
--- 커뮤니티 : 기업리뷰, 면접후기, 자유게시판
+-- 커뮤니티 : 기업리뷰, 자유게시판
 -- -- 기업리뷰   : comu_id=COMU01
--- -- 면접후기   : comu_id=COMU02
--- -- 자유게시판 : comu_id=COMU03
+-- -- 자유게시판 : comu_id=COMU02
 -- -- COMU table 생성
 -- 컬럼 : ( comu_id, comu_name )
 -- values ( COMU01, 기업리뷰 ) ( COMU02, 자유게시판 )
@@ -142,12 +141,13 @@ COMMIT;
 
 SELECT * FROM COMU;
 
--- 커뮤니티_기업리뷰 View 화면 =================================================
-DROP TABLE REVIEW_VIEW;
-CREATE TABLE REVIEW_VIEW (
+-- 커뮤니티_기업리뷰 ===========================================================
+DROP TABLE REVIEWBOARD;
+CREATE TABLE REVIEWBOARD (
     COMU_ID     VARCHAR2(30)    NOT NULL
-  ,  CONSTRAINT FK_REVIEW_VIEW_COMU FOREIGN KEY (COMU_ID) REFERENCES COMU(COMU_ID)
-  ,  CONSTRAINT PK_REVIEW_VIEW PRIMARY KEY (COMU_ID)
+--  ,  CONSTRAINT FK_REVIEW_VIEW_COMU FOREIGN KEY (COMU_ID) REFERENCES COMU(COMU_ID)
+--  ,  CONSTRAINT PK_REVIEW_VIEW PRIMARY KEY (COMU_ID)
+  , RNO         NUMBER(4)       PRIMARY KEY
   , NAME        VARCHAR2(30)    NOT NULL            -- 작성자
   , TITLE       VARCHAR2(240)   NOT NULL            -- 제목
   , CONTENT     VARCHAR2(4000)  NOT NULL            -- 내용
@@ -158,9 +158,10 @@ CREATE TABLE REVIEW_VIEW (
 --  , FOREIGN KEY (C_ID) REFERENCES CUSER(C_ID)
 );
 
-INSERT  INTO  REVIEW_VIEW
+INSERT  INTO  REVIEWBOARD
 VALUES (
     'COMU01',
+    1,
     '루피',
     '틀딱 대리 뒷통수때린 썰 푼다ㅋㅋ',
     '미안하다..이거보여주려고 어그로 끌었다...',
@@ -169,35 +170,15 @@ VALUES (
    
 COMMIT;
 
-SELECT * FROM REVIEW_VIEW;
+SELECT * FROM REVIEWBOARD;
 
--- 커뮤니티_기업리뷰 jsp 화면 ==================================================
-DROP TABLE REVIEW_JSP;
-CREATE TABLE REVIEW_JSP (
-    RNO         NUMBER(4)       PRIMARY KEY
---  ,  CONSTRAINT FK_REVIEW_JSP_REVIEW_VIEW FOREIGN KEY (RNO) REFERENCES REVIEW_VIEW (RNO)
---  ,  CONSTRAINT PK_REVIEW_JSP PRIMARY KEY (RNO)
-  , NAME        VARCHAR2(20)    NOT NULL
-  , STAR        NUMBER(2)       NOT NULL
-);
-
-INSERT  INTO  REVIEW_JSP
-VALUES (
-    1,
-    '루피',
-    2
-    );
-   
-COMMIT;
-
-SELECT * FROM REVIEW_JSP;
-
--- 커뮤니티_자유게시판 View 화면 ===============================================
-DROP TABLE FREE_VIEW;
-CREATE TABLE FREE_VIEW (
+-- 커뮤니티_자유게시판 =========================================================
+DROP TABLE FREEBOARD;
+CREATE TABLE FREEBOARD (
     COMU_ID     VARCHAR2(30)    NOT NULL
-  ,  CONSTRAINT FK_FREE_VIEW_COMU FOREIGN KEY (COMU_ID) REFERENCES COMU(COMU_ID)
-  ,  CONSTRAINT PK_FREE_VIEW PRIMARY KEY (COMU_ID)
+--  ,  CONSTRAINT FK_FREE_VIEW_COMU FOREIGN KEY (COMU_ID) REFERENCES COMU(COMU_ID)
+--  ,  CONSTRAINT PK_FREE_VIEW PRIMARY KEY (COMU_ID)
+  , FNO         NUMBER(4)     PRIMARY KEY
   , NAME      VARCHAR2(30)    NOT NULL              -- 작성자
   , TITLE       VARCHAR2(240)   NOT NULL            -- 제목
   , CONTENT     VARCHAR2(4000)                      -- 내용
@@ -207,9 +188,10 @@ CREATE TABLE FREE_VIEW (
 --  , FOREIGN KEY (C_ID) REFERENCES CUSER(C_ID)
 );
 
-INSERT  INTO  FREE_VIEW
+INSERT  INTO  FREEBOARD
 VALUES (
     'COMU02',
+    1,
     '루피',
     '그린테크 김대리 고발합니다',
     '그린테크 김대리 화장실에서 담배폈습니다'
@@ -217,29 +199,7 @@ VALUES (
    
 COMMIT;
 
-SELECT * FROM FREE_VIEW;
-
-
--- 커뮤니티_자유게시판 jsp 화면 ===============================================
-DROP TABLE FREE_JSP;
-CREATE TABLE FREE_JSP (
-    FNO         NUMBER(4)       PRIMARY KEY
---  ,  CONSTRAINT FK_REVIEW_JSP_REVIEW_VIEW FOREIGN KEY (RNO) REFERENCES REVIEW_VIEW (RNO)
---  ,  CONSTRAINT PK_REVIEW_JSP PRIMARY KEY (RNO)
-  , NAME        VARCHAR2(20)    NOT NULL
-  , TITLE       VARCHAR2(240)   NOT NULL
-);
-
-INSERT  INTO  FREE_JSP
-VALUES (
-    1,
-    '루피',
-    '그린테크 김대리 고발합니다'
-    );
-   
-COMMIT;
-
-SELECT * FROM FREE_JSP;
+SELECT * FROM FREEBOARD;
 
 
 --==============================================================================
@@ -274,12 +234,12 @@ INSERT INTO REGION VALUES ( 'QUICK01', 1, '서울' );
 INSERT INTO REGION VALUES ( 'QUICK01', 2, '부산' );
 INSERT INTO REGION VALUES ( 'QUICK01', 3, '대구' );
 INSERT INTO REGION VALUES ( 'QUICK01', 4, '인천' );
-INSERT INTO REGION VALUES ( 'QUICK01', 5, '광주' );
-INSERT INTO REGION VALUES ( 'QUICK01', 6, '대전' );
-INSERT INTO REGION VALUES ( 'QUICK01', 7, '울산' );
+INSERT INTO REGION VALUES ( 'QUICK01', 5, 'U' );
+INSERT INTO REGION VALUES ( 'QUICK01', 6, 'DAEJEON' );
+INSERT INTO REGION VALUES ( 'QUICK01', 7, 'ULSAN' );
 
 COMMIT;
-111
+
 SELECT * FROM REGION;
 
 -- 퀵서치_기술스택 QUICK_ID='QUICK02' ==========================================
@@ -311,9 +271,9 @@ CREATE TABLE CAREER (
   , EXPER     VARCHAR2(30)  NOT NULL
   );
 
-INSERT INTO CAREER VALUES ( 'QUICK03', 1, '신입' );
-INSERT INTO CAREER VALUES ( 'QUICK03', 2, '경력' );
-INSERT INTO CAREER VALUES ( 'QUICK03', 3, '경력무관' );
+INSERT INTO CAREER VALUES ( 'QUICK03', 1, 'NEWCOMER' );
+INSERT INTO CAREER VALUES ( 'QUICK03', 2, 'EXPERIENCED' );
+INSERT INTO CAREER VALUES ( 'QUICK03', 3, 'IRRELEVANT' );
    
 COMMIT;
 
@@ -321,13 +281,20 @@ SELECT * FROM CAREER;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 --==============================================================================
 --==============================================================================
 --==============================================================================
 
 
 db 고객센터 jsp, view 화면 추가
+=======
+--==============================================================================
+--==============================================================================
+--==============================================================================
+>>>>>>> branch 'develop' of https://github.com/DoKyeomKim/TeamProject.git
 
+<<<<<<< HEAD
 
 -- 고객센터 jsp 화면 ===========================================================
 CREATE TABLE SERVICE_JSP (
@@ -335,25 +302,22 @@ CREATE TABLE SERVICE_JSP (
     , NAME      VARCHAR2(30)    NOT NULL
     , TITLE     VARCHAR2(240)   NOT NULL
 );
+=======
+>>>>>>> branch 'develop' of https://github.com/DoKyeomKim/TeamProject.git
 
-INSERT  INTO  SERVICE_JSP  VALUES ( 1, '루피', '이게 말이 되나요?' );
-
-COMMIT;
-
-SELECT * FROM SERVICE_JSP;
-
--- 고객센터 View 화면 ==========================================================
-CREATE TABLE SERVICE_VIEW (
+-- 고객센터 ====================================================================
+DROP TABLE SERVICEBOARD;
+CREATE TABLE SERVICEBOARD (
     SNO         NUMBER(4, 0)    NOT NULL
-  ,  CONSTRAINT FK_SERVICE_VIEW_SERVICE_JSP FOREIGN KEY (SNO) REFERENCES SERVICE_JSP (SNO)
-  ,  CONSTRAINT PK_SERVICE_VIEW PRIMARY KEY (SNO)
+--  ,  CONSTRAINT FK_SERVICE_VIEW_SERVICE_JSP FOREIGN KEY (SNO) REFERENCES SERVICE_JSP (SNO)
+--  ,  CONSTRAINT PK_SERVICE_VIEW PRIMARY KEY (SNO)
   , NAME        VARCHAR2(30)    NOT NULL              -- 작성자
   , TITLE       VARCHAR2(240)   NOT NULL            -- 제목
   , CONTENT     VARCHAR2(4000)                      -- 내용
 );
 
-INSERT  INTO  SERVICE_VIEW VALUES ( 1, '루피', '이게 말이 되나요?', '개선바랍니다' );
+INSERT  INTO  SERVICEBOARD VALUES ( 1, '루피', '이게 말이 되나요?', '개선바랍니다' );
 
 COMMIT;
 
-SELECT * FROM SERVICE_VIEW;
+SELECT * FROM SERVICEBOARD;

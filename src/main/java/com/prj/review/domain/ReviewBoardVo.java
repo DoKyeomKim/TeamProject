@@ -5,14 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ReviewVo {
-
-	private String comu_id;
+@AllArgsConstructor
+public class ReviewBoardVo {
+	private int rno;
 	private String name;
+	private int star;
+	private String comu_id;
 	private String title;
 	private String content;
-	private int star;
-	
 }
