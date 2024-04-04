@@ -1,4 +1,4 @@
-package com.prj.review.domain;
+package com.prj.reviewboard.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
