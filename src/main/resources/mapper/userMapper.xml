@@ -30,7 +30,5 @@ SET   P_ID     = #{P_ID},
       P_EMAIL  = #{P_EMAIL},
       SKILL    = #{SKILL}
 WHERE P_ID     = #{P_ID}
-
-
 </update>
 </mapper>
