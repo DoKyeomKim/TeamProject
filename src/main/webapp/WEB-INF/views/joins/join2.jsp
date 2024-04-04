@@ -12,7 +12,7 @@
 </style>
 <body>
 	<h1 style="text-align: center; padding-top: 100px;">기업 회원가입</h1>
-	<form action="" method="post" class="pjoinForm">
+	<form action="/" method="post" class="pjoinForm">
     <div>
     <input type="text"     name="c_id"     placeholder="아이디"      class="cjoinFormid">
     </div>
