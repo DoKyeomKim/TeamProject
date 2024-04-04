@@ -1,55 +1,154 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core"  %>    
-    
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="icon" type="image/png" href="/img/favicon.png" />
-<link rel="stylesheet"  href="/css/common.css" />
-<script src="https://cdn.jsdelivr.net/npm/browser-scss@1.0.3/dist/browser-scss.min.js"></script>
-<style>
-  
-</style>
+<link rel="stylesheet"  href="/css/header.css" />
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+    <style>
+     
+        body {
+            margin: 0;
+            padding: 0;
+        }
+          /* Header부분 */    
+
+         
+
+      
+      /*퀵서치*/
+      .quickSearch {
+          display: flex;
+          justify-content: center;
+          margin: 20px;
+         margin-top : 100px;
+          
+      }
+      
+      .quickSearch form {
+           display: flex;
+      }
+      
+
+      
+      .quickSearch select {
+          margin-right: 30px; 
+          padding: 15px;      
+          width: 150px;      
+      }
+      
+      
+      .quickSearchBtn{
+          padding: 10px 15px;
+         
+          }
+          
+      /* main 부분*/    
+      main {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 10px;
+         padding: 200px 500px;
+       }
+   
+       .cResume {
+           border: 1px solid #ccc;
+           margin : 10px;
+           padding: 25px 15px;
+           text-align: center;
+
+       }
+   
+       .cResume img {
+           max-width: 100%;
+           height: auto;
+           margin-bottom: 50px;
+       }
+   
+       .cResume .cName, .cResume .title {
+           font-size: 16px;
+           margin-bottom: 5px;
+       }
+             
+    </style>
 
 </head>
 <body>
-	<main>  
-	  <h2>사용자 목록</h2>
-	  <table>
-	    <tr>
-	      <td>ID</td>
-	      <td>이름</td>
-	      <td>이메일</td>
-	      <td>포인트</td>
-	      <td>가입일</td>	   
-	    </tr>
-	    <tr>
-	      <td colspan="5">
-	        [<a href="/Users/WriteForm">사용자 추가</a>]
-	      </td>
-	    </tr>
-	    
-	    <c:forEach  var="userVo" items="${userList}" >
-	    <tr>
-	      <td>${userVo.userid}</td>
-	      <td>
-	      	<a href="/Users/View?userid=${userVo.userid}">
-	      	${userVo.username}
-	      	</a>
-	      </td>
-	      <td>${userVo.email }</td>	      
-	      <td>${userVo.upoint}</td>	      
-	      <td>${userVo.indate}</td>      
-	    </tr>
-	    </c:forEach>
-	    
-	    
-	  </table>
-	
-	</main>
+
+	 <%@include file="/WEB-INF/include/header.jsp" %>
+
+
+      <div class="quickSearch">
+         <form action="/#" method="get">
+            <select>
+               <option>지역</option>
+               <option>서울</option>
+               <option>부산</option>
+               <option>울산</option>
+            </select>
+
+            <!--c: foreach 할듯 -->
+            <select>
+               <option>기술스택</option>
+               <option>java</option>
+               <option>html</option>
+               <option>css</option>
+            </select> 
+            <select>
+               <option>경력</option>
+               <option>신입</option>
+               <option>1~3년</option>
+               <option>3~5년</option>
+            </select>
+            
+            <button type="submit" class="quickSearchBtn">검색</button>
+         </form>
+      </div>
+
+
+      
+      <main>
+                 
+          <!--c: foreach 할듯 -->
+          <div class="cResume">
+              <a href=""><img src="" alt="이미지1"></a>
+              <div class="cName"><a href="">회사명1</a></div>
+              <div class="title"><a href="">제목1</a></div>
+          </div>
+          <div class="cResume">
+              <a href=""><img src="" alt="이미지1"></a>
+              <div class="cName"><a href="">회사명1</a></div>
+              <div class="title"><a href="">제목1</a></div>
+          </div>
+          <div class="cResume">
+              <a href=""><img src="" alt="이미지1"></a>
+              <div class="cName"><a href="">회사명1</a></div>
+              <div class="title"><a href="">제목1</a></div>
+          </div>
+          <div class="cResume">
+              <a href=""><img src="" alt="이미지1"></a>
+              <div class="cName"><a href="">회사명1</a></div>
+              <div class="title"><a href="">제목1</a></div>
+          </div>
+          <div class="cResume">
+              <a href=""><img src="" alt="이미지1"></a>
+              <div class="cName"><a href="">회사명1</a></div>
+              <div class="title"><a href="">제목1</a></div>
+          </div>
+          <div class="cResume">
+              <a href=""><img src="" alt="이미지1"></a>
+              <div class="cName"><a href="">회사명1</a></div>
+              <div class="title"><a href="">제목1</a></div>
+          </div>
+   
+      </main>
+
+	 <%@include file="/WEB-INF/include/footer.jsp" %>
+
+
 </body>
 </html>
-
