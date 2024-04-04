@@ -13,6 +13,7 @@
 <body>
 	<h1 style="text-align: center; padding-top: 100px;">개인 회원가입</h1>
 	<form action="" method="post" class="cjoinForm">
+	<div style="border: 1px solid skyblue;">
     <div>
     <input type="text"     name="p_id"     placeholder="아이디"      class="pjoinFormid">
     </div>
@@ -32,6 +33,7 @@
     <input type="email"    name="p_email"  placeholder="이메일"       class="pjoinFormemail">
     </div>
     
+    <hr class="my-4">
     <h4 class="mb-3">보유 기술(선택)</h4>
     <!-- <small>보유한 기술을 선택</small>-->
     <!--<div class="my-resumeForm-skill-box-1 d-flex">-->
@@ -86,6 +88,7 @@
 
                 </div>
                 <hr class="my-4">
+       </div>
        <div>
        <button class="w-100 btn btn-lg" onclick="saveResume()" style="background-color: #7CC98A;color: #fff; font-weight: 200px;" type="button">회원가입</button>
        </div>
