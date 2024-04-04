@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@include file="/WEB-INF/include/header.jsp" %>
   <!DOCTYPE html>
   <html>
 
@@ -60,7 +61,7 @@
     </head>
 
   <body>
-    <h2 class="title">이력서 작성</h2>
+    <h4 class="title">개인 마이페이지</h4>
     <div class="center">
       <input type="text" style="text-align: center;" placeholder="나를 소개하는 한마디를 적어주세요">
     </div>
@@ -136,3 +137,4 @@
       <a href="/Mypage/Manage">작성완료</a>
     </div>
   </body>
+  <%@include file="/WEB-INF/include/footer.jsp" %>
