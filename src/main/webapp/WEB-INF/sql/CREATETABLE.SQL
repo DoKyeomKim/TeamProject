@@ -279,7 +279,7 @@ INSERT INTO REGION VALUES ( 'QUICK01', 6, '대전' );
 INSERT INTO REGION VALUES ( 'QUICK01', 7, '울산' );
 
 COMMIT;
-
+111
 SELECT * FROM REGION;
 
 -- 퀵서치_기술스택 QUICK_ID='QUICK02' ==========================================
