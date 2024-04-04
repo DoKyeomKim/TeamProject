@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>자유게시판 게시글 등록</h2>
+	
+	
 </body>
 </html>
