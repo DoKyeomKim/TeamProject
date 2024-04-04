@@ -11,10 +11,32 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet"  href="/css/header.css" />
 	
+	<style>
+	#rmain table {
+		border: 1px solid black;
+		width: 70%;
+		margin: 50px 50px;
+	    padding: 10px 50px;  
+	}
+	#rmain table tr { 
+		border: 1px solid black;
+	    text-align  : center; 
+	}
+	#rmain table tr  td { 
+		border: 1px solid black;
+	    padding     : 10px;  
+	    text-align  : center; 
+	}
+	td:nth-of-type(1) { width : 100px; }
+	td:nth-of-type(2) { width : 300px; }
+	td:nth-of-type(3) { width : 80px; }
+	
+	</style>	
+	
   </head>
 
   <body>
-  
+   <main id="rmain">
   	<%@include file="/WEB-INF/include/header.jsp" %>
 
     <table>
@@ -35,13 +57,16 @@
       </tr>
       <c:forEach var="review" items="${ reviewList }">
 	      <tr>
-	        <td>${ reviewVo.rno }</td>
-	        <td>${ reviewVo.name }</td>
-	        <td>${ reviewVo.star }</td>
+	        <td>${ review.rno }</td>
+	        <td>${ review.name }</td>
+	        <td>${ review.star }</td>
 	      </tr>
       </c:forEach>
-    </table>  
-
+    </table>
+    
+    <%@include file="/WEB-INF/include/footer.jsp" %>
+      
+   </main>
   </body>
 
   </html>

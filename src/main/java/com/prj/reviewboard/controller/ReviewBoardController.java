@@ -1,4 +1,4 @@
-package com.prj.review.controller;
+package com.prj.reviewboard.controller;
 
 import java.util.List;
 
@@ -7,21 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.prj.review.domain.ReviewVo;
-import com.prj.review.mapper.ReviewMapper;
+import com.prj.reviewboard.domain.ReviewBoardVo;
+import com.prj.reviewboard.mapper.ReviewBoardMapper;
 
 @Controller
 @RequestMapping("/Review")
-public class ReviewController {
+public class ReviewBoardController {
 
 	@Autowired
-	private ReviewMapper reviewMapper;
+	private ReviewBoardMapper reviewBoardMapper;
 	
 	// /Review/List
 	@RequestMapping("/List")
-	public ModelAndView list( ReviewVo reviewVo ) {
+	public ModelAndView list( ReviewBoardVo reviewBoardVo ) {
 		
-		List<ReviewVo> reviewList = reviewMapper.getReviewList();
+		List<ReviewBoardVo> reviewList = reviewBoardMapper.getReviewList( reviewBoardVo );
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("reviewList", reviewList);
