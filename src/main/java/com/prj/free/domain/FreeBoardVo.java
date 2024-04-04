@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FreeViewVo {
-	private String comu_id;
+public class FreeBoardVo {
+	private int fno;
 	private String name;
-	private String title;
+	private String title;	
+	private String comu_id;
 	private String content;
 }

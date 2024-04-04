@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReviewViewVo {
-	private String comu_id;
+public class ReviewBoardVo {
+	private int rno;
 	private String name;
+	private int star;
+	private String comu_id;
 	private String title;
 	private String content;
-	private int star;
 }
