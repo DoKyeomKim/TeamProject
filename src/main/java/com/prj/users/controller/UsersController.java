@@ -15,15 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 // 회원정보
 public class UsersController {
 
-	// 개인 회업가입 폼
-	@RequestMapping("/Joins/Join2")
-	public ModelAndView joinForm() {
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/");
-		return null;
-	}
-
 	@Autowired
 	private UsersMapper usersMapper;
 	
