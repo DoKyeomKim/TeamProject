@@ -1,5 +1,7 @@
 package com.prj.users.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +34,14 @@ public class UsersController {
 	// 회원가입
 	@RequestMapping("/Write")
 	public ModelAndView write(PUserVo puserVo) {
-	 usersMapper.insertpuser(puserVo);
+	 
+		List<PUserVo> userList = usersMapper.insertpuser(puserVo);
+		System.out.println("=============userList: " + userList);
 		
 		ModelAndView mv  = new ModelAndView();
-		mv.setViewName("redirect:/");
+		
+		mv.addObject("userList", userList);
+		mv.setViewName("/");
 		return mv;
 	}
 	//------------------------------------------------

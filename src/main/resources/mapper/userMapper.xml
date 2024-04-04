@@ -12,12 +12,12 @@ INSERT INTO PUSER(
 	SKILL
 )
 VALUES(
-	#{P_ID},
-	#{P_PASSWD},
-	#{P_NAME},
-	#{P_PHONE},
-	#{P_EMAIL},
-	#{SKILL}
+	#{p_id},
+	#{p_passwd},
+	#{p_name},
+	#{p_phone},
+	#{p_email},
+	'JAVA'
 )
 </insert>
 
