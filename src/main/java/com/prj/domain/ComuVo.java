@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ComuVo {
+	
 	private String comu_id;
 	private String comu_name;
 	

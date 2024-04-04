@@ -12,5 +12,34 @@
 	  FROM  REVIEWBOARD
   
   </select>
+  
+  <select id="getComuList">
+  
+    SELECT  COMU_ID,
+			COMU_NAME
+	  FROM	COMU
+  
+  </select>
+  
+  <insert id="insertReview">
+  
+    INSERT  INTO  REVIEWBOARD (
+    	COMU_ID,
+		RNO,
+		NAME,
+		TITLE,
+		CONTENT,
+		STAR
+    )
+    VALUES (
+    	#{ comu_id },
+		#{ rno },
+		#{ name },
+		#{ title },
+		#{ content },
+		#{ star }
+    )
+  
+  </insert>
 
 </mapper>
