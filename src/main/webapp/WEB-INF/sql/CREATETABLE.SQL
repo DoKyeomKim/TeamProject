@@ -318,3 +318,35 @@ INSERT INTO CAREER VALUES ( 'QUICK03', 3, '경력무관' );
 COMMIT;
 
 SELECT * FROM CAREER;
+
+
+db 고객센터 jsp, view 화면 추가
+
+-- 고객센터 jsp 화면 ===========================================================
+CREATE TABLE SERVICE_JSP (
+      SNO       NUMBER(4, 0)    PRIMARY KEY
+    , NAME      VARCHAR2(30)    NOT NULL
+    , TITLE     VARCHAR2(240)   NOT NULL
+);
+
+INSERT  INTO  SERVICE_JSP  VALUES ( 1, '루피', '이게 말이 되나요?' );
+
+COMMIT;
+
+SELECT * FROM SERVICE_JSP;
+
+-- 고객센터 View 화면 ==========================================================
+CREATE TABLE SERVICE_VIEW (
+    SNO         NUMBER(4, 0)    NOT NULL
+  ,  CONSTRAINT FK_SERVICE_VIEW_SERVICE_JSP FOREIGN KEY (SNO) REFERENCES SERVICE_JSP (SNO)
+  ,  CONSTRAINT PK_SERVICE_VIEW PRIMARY KEY (SNO)
+  , NAME        VARCHAR2(30)    NOT NULL              -- 작성자
+  , TITLE       VARCHAR2(240)   NOT NULL            -- 제목
+  , CONTENT     VARCHAR2(4000)                      -- 내용
+);
+
+INSERT  INTO  SERVICE_VIEW VALUES ( 1, '루피', '이게 말이 되나요?', '개선바랍니다' );
+
+COMMIT;
+
+SELECT * FROM SERVICE_VIEW;

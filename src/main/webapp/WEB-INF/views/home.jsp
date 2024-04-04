@@ -5,79 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"  href="/css/header.css" />
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <style>
-       /* Header부분 */    
+     
         body {
             margin: 0;
             padding: 0;
         }
-        
-        header {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            background-color: black;
-            color: #fff;
-            padding: 50px 50px;
-            align-items: center;
-        }
-        header img {
-            max-width: 100%;
-            height: auto;
-        }
-        .logo{
-           margin-left : 30px;
-        }
-                 
-      .search {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-      }
-      
-      .search input[type="text"] {
-          padding: 19px;  
-          margin-left: -150px;
-          flex-grow: 1.9; 
-      }
-      
-      .search button {
-          padding: 19px 25px;  
-          background-color: #007BFF;
-          color: white;
-          border: none;
-          cursor: pointer;
-      }
-         
-         .userLogin, .menuList {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: 20px;
-        }
-        
-        .menuList {
-           margin-top: 50px;
+          /* Header부분 */    
 
-        }
-        
-        .userLogin a, .menuList a {
-            margin-left: 15px; 
-            color: white;
-            text-decoration: none;
-        }
-        
-        .menuList a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 15px; 
-          font-size: 18px; 
-          text-decoration: none;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          }
          
 
       
@@ -139,26 +78,8 @@
 
 </head>
 <body>
-   <!-- 헤더 -->
-   <header>
-      <div class="logo">
-         <a href="/"><img src="/img/logo.png" alt="로고"></a>
-      </div>
 
-      <div class="search">
-         <form action="#" method="get">
-            <input type="text" name="q" placeholder="검색어를 입력하세요">
-            <button type="submit">검색</button>
-         </form>
-      </div>
-
-      <div class="userLogin">
-         <a href=""><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>
-      </div>
-      <div class="menuList">
-         <a href="#">채용정보</a><a href="#">인재정보</a><a href="#">커뮤니티</a>
-      </div>
-   </header>
+	 <%@include file="/WEB-INF/include/header.jsp" %>
 
 
       <div class="quickSearch">
@@ -226,14 +147,7 @@
    
       </main>
 
-
-<footer style="background-color: #ccc; text-align : center;  color: #333; padding: 20px;">
-       <div><a href="">고객센터</a></div>
-         <div>Tel: 02-1234-5678 / Fax: 02-1234-5679</div>
-        <div>Email: green1@gmail.com</div>
-       <div>주소: 서울시 강남구 예시로로 1234</div>
-</footer>
-
+	 <%@include file="/WEB-INF/include/footer.jsp" %>
 
 
 </body>
