@@ -52,7 +52,7 @@
     <table>
       <tr>
         <td>No.</td>
-        <td>작성자/기업명</td>
+        <td>작성자/기업명1</td>
         <td>평점</td>
       </tr>
       <c:forEach var="review" items="${ reviewList }">
