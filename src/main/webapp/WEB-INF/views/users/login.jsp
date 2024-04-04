@@ -28,20 +28,14 @@
 	 <tr>
 	   <td colspan="2">
 	    <input type="submit" value="로그인" />
-	    <input type="button" value="HOME" id="goList" />
+	    <a href="/Joins/Join2">회원가입</a>
 	   </td>
 	 </tr>
 	
 	</table>	
 	</form>   
 	
-	<script>
-  	const  goListEl  = document.getElementById('goList');
-  	goListEl.addEventListener('click', function(e) {
-  		location.href = '/';
-  	})
-  
-  </script>
+
   
 
 </body>

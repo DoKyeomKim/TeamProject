@@ -27,7 +27,7 @@
     <input type="text"     name="p_name"   placeholder="이름"         class="pjoinFormname">
     </div>
     <div>
-    <input type="number"   name="p_phone"  placeholder="전화번호"     class="pjoinFormphone">
+    <input type="text"   name="p_phone"  placeholder="전화번호"       class="pjoinFormphone">
     </div>
     <div>
     <input type="email"    name="p_email"  placeholder="이메일"       class="pjoinFormemail">
