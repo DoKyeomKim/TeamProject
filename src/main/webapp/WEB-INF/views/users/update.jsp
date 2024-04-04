@@ -15,22 +15,22 @@
 	<form action="" method="post" class="cjoinForm">
 	<div style="border: 1px solid skyblue;">
     <div>
-    <input type="text"     name="p_id"     placeholder="아이디"      class="pjoinFormid"     value="{vo.p_id}" readonly />
+    <input type="text"     name="p_id"     placeholder="아이디"      class="pjoinFormid"     value="${vo.p_id}" readonly />
     </div>
     <div>
-    <input type="password" name="p_passwd" placeholder="비밀번호"     class="pjoinFormpw"    value="{vo.p_passwd}"/>
+    <input type="password" name="p_passwd" placeholder="비밀번호"     class="pjoinFormpw"    value="${vo.p_passwd}"/>
     </div>
     <div>
-    <input type="password" name="p_passwd" placeholder="비밀번호확인" class="pjoinFormpw"    value="{vo.p_passwd}"/>
+    <input type="password" name="p_passwd" placeholder="비밀번호확인" class="pjoinFormpw"    value="${vo.p_passwd}"/>
     </div>
     <div>
-    <input type="text"     name="p_name"   placeholder="이름"         class="pjoinFormname"  value="{vo.p_name}" readonly />
+    <input type="text"     name="p_name"   placeholder="이름"         class="pjoinFormname"  value="${vo.p_name}" readonly />
     </div>
     <div>
-    <input type="text"   name="p_phone"  placeholder="전화번호"     class="pjoinFormphone" value="{vo.p_phone}"/>
+    <input type="text"   name="p_phone"  placeholder="전화번호"     class="pjoinFormphone" value="${vo.p_phone}"/>
     </div>
     <div>
-    <input type="email"    name="p_email"  placeholder="이메일"       class="pjoinFormemail" value="{vo.p_email}"/>
+    <input type="email"    name="p_email"  placeholder="이메일"       class="pjoinFormemail" value="${vo.p_email}"/>
     </div>
     
     <hr class="my-4">
