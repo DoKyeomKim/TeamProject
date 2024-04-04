@@ -270,13 +270,13 @@ CREATE TABLE REGION (
   , LOC       VARCHAR2(20)
 );
 
-INSERT INTO REGION VALUES ( 'QUICK01', 1, 'SEOUL' );
-INSERT INTO REGION VALUES ( 'QUICK01', 2, 'PUSAN' );
-INSERT INTO REGION VALUES ( 'QUICK01', 3, 'DAEGU' );
-INSERT INTO REGION VALUES ( 'QUICK01', 4, 'INCHEON' );
-INSERT INTO REGION VALUES ( 'QUICK01', 5, 'GWANGJU' );
-INSERT INTO REGION VALUES ( 'QUICK01', 6, 'DAEJEON' );
-INSERT INTO REGION VALUES ( 'QUICK01', 7, 'ULSAN' );
+INSERT INTO REGION VALUES ( 'QUICK01', 1, '서울' );
+INSERT INTO REGION VALUES ( 'QUICK01', 2, '부산' );
+INSERT INTO REGION VALUES ( 'QUICK01', 3, '대구' );
+INSERT INTO REGION VALUES ( 'QUICK01', 4, '인천' );
+INSERT INTO REGION VALUES ( 'QUICK01', 5, '광주' );
+INSERT INTO REGION VALUES ( 'QUICK01', 6, '대전' );
+INSERT INTO REGION VALUES ( 'QUICK01', 7, '울산' );
 
 COMMIT;
 
@@ -311,10 +311,45 @@ CREATE TABLE CAREER (
   , EXPER     VARCHAR2(30)  NOT NULL
   );
 
-INSERT INTO CAREER VALUES ( 'QUICK03', 1, 'NEWCOMER' );
-INSERT INTO CAREER VALUES ( 'QUICK03', 2, 'EXPERIENCED' );
-INSERT INTO CAREER VALUES ( 'QUICK03', 3, 'IRRELEVANT' );
+INSERT INTO CAREER VALUES ( 'QUICK03', 1, '신입' );
+INSERT INTO CAREER VALUES ( 'QUICK03', 2, '경력' );
+INSERT INTO CAREER VALUES ( 'QUICK03', 3, '경력무관' );
    
 COMMIT;
 
 SELECT * FROM CAREER;
+
+
+--==============================================================================
+--==============================================================================
+--==============================================================================
+
+
+-- 고객센터 jsp 화면 ===========================================================
+CREATE TABLE SERVICE_JSP (
+      SNO       NUMBER(4, 0)    PRIMARY KEY
+    , NAME      VARCHAR2(30)    NOT NULL
+    , TITLE     VARCHAR2(240)   NOT NULL
+);
+
+INSERT  INTO  SERVICE_JSP  VALUES ( 1, '루피', '이게 말이 되나요?' );
+
+COMMIT;
+
+SELECT * FROM SERVICE_JSP;
+
+-- 고객센터 View 화면 ==========================================================
+CREATE TABLE SERVICE_VIEW (
+    SNO         NUMBER(4, 0)    NOT NULL
+  ,  CONSTRAINT FK_SERVICE_VIEW_SERVICE_JSP FOREIGN KEY (SNO) REFERENCES SERVICE_JSP (SNO)
+  ,  CONSTRAINT PK_SERVICE_VIEW PRIMARY KEY (SNO)
+  , NAME        VARCHAR2(30)    NOT NULL              -- 작성자
+  , TITLE       VARCHAR2(240)   NOT NULL            -- 제목
+  , CONTENT     VARCHAR2(4000)                      -- 내용
+);
+
+INSERT  INTO  SERVICE_VIEW VALUES ( 1, '루피', '이게 말이 되나요?', '개선바랍니다' );
+
+COMMIT;
+
+SELECT * FROM SERVICE_VIEW;
