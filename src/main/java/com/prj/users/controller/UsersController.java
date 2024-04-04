@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.prj.users.domain.PUserVo;
 import com.prj.users.mapper.UsersMapper;
 
 import lombok.extern.slf4j.Slf4j;
+
 
 @Slf4j
 @Controller
@@ -29,7 +31,8 @@ public class UsersController {
 	
 	// 회원가입
 	@RequestMapping("/Write")
-	public ModelAndView write() {
+	public ModelAndView write(PUserVo puserVo) {
+	 usersMapper.insertpuser(puserVo);
 		
 		ModelAndView mv  = new ModelAndView();
 		mv.setViewName("redirect:/");
@@ -46,10 +49,11 @@ public class UsersController {
 		}
 	// 회원정보 수정 후 프로필로???????	
 		@RequestMapping("/Update")
-		public ModelAndView update() {
+		public ModelAndView update(PUserVo puserVo) {
 			
+			usersMapper.updatepuser(puserVo);
 			ModelAndView mv  = new ModelAndView();
-			mv.setViewName("users/update");
+			mv.setViewName("redirect:/");
 			return mv;
 		}
 		

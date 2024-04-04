@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.users.mapper.UsersMapper">
+
+<insert id="insertpuser">
+INSERT INTO PUSER(
+	P_ID,
+	P_PASSWD,
+	P_NAME,
+	P_PHONE,
+	P_EMAIL,
+	SKILL
+)
+VALUES(
+	#{P_ID},
+	#{P_PASSWD},
+	#{P_NAME},
+	#{P_PHONE},
+	#{P_EMAIL},
+	#{SKILL}
+)
+</insert>
+
+<update id="updatepuser">
+UPDATE PUSER
+SET   P_ID     = #{P_ID},
+      P_PASSWD = #{P_PASSWD},
+      P_NAME   = #{P_NAME},
+      P_PHONE  = #{P_PHONE},
+      P_EMAIL  = #{P_EMAIL},
+      SKILL    = #{SKILL}
+WHERE P_ID     = #{P_ID}
+
+
+</update>
+</mapper>

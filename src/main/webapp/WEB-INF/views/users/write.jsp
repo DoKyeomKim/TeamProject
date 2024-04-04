@@ -90,8 +90,15 @@
                 <hr class="my-4">
        </div>
        <div>
-       <button class="w-100 btn btn-lg" onclick="saveResume()" style="background-color: #7CC98A;color: #fff; font-weight: 200px;" type="button">회원가입</button>
+       <button id="goHome" class="w-100 btn btn-lg" onclick="saveResume()" style="background-color: #7CC98A;color: #fff; font-weight: 200px;" type="button">회원가입</button>
        </div>
-              
+   
+  <script>
+    const goListEl = document.getElementById('goHome');
+    goListEl.addEventListener('click', function(e){
+    	location.href='/';
+    	
+    })
+  </script>	          
 </body>
 </html>
