@@ -28,9 +28,10 @@
 	    text-align  : center; 
 	}
 	td:nth-of-type(1) { width : 100px; }
-	td:nth-of-type(2) { width : 300px; }
-	td:nth-of-type(3) { width : 80px; }
-		
+	td:nth-of-type(2) { width : 200px; }
+	td:nth-of-type(3) { width : 100px; }
+	td:nth-of-type(4) { width : 200px; }
+	
 	</style>	
 	
   </head>
@@ -38,46 +39,49 @@
   <body>
    <main id="rmain">
   	<%@include file="/WEB-INF/include/header.jsp" %>
-
-    <table id="comu">
-      <c:forEach var="comu" items="${ comuList }">
-        <td>
-          <a href="/Comu/List?comu_id=${ comu.comu_id }">
-          ${ comu.comu_name }
-          </a>
-        </td>
-      </c:forEach>
-    </table>
     
-    <table id="review">
+    <br>
+    <h2>기업리뷰 등록</h2>
+    <form action="/Review/Write" method="POST">
+    
+    <table>
       <tr>
-        <td>No.</td>
-        <td>작성자/기업명</td>
-        <td>평점</td>
+        <td>이름</td>
+        <td colspan="3">${ reviewBoardVo.name }</td>
       </tr>
-      <c:forEach var="review" items="${ reviewList }">
-	      <tr>
-	        <td>${ review.rno }</td>
-	        <td>${ review.name }</td>
-	        <td>${ review.star }</td>
-	      </tr>
-      </c:forEach>
+      <tr>
+        <td>제목</td>
+        <td>${ reviewBoardVo.title }</td>
+        <td>평점</td>
+        <td>${ reviewBoardVo.star }</td>
+      </tr>
+      <tr>
+        <td>내용</td>
+        <td>${ reviewBoardVo.content }</td>
+      </tr>
+      
+    <tr>
+      <td colspan="4">
+    	<input type="submit" value="완료" id="goList">
+      </td>
+    </tr>
+    
     </table>
-    <div>
-    	<input type="button" value="글 작성" id="goWrite">
-    </div>
+    </form>
+    
     <%@include file="/WEB-INF/include/footer.jsp" %>
       
    </main>
    
    <script>
    
-	    const  goWriteEl  = document.getElementById('goWrite');
-	    goWriteEl.addEventListener('click', function(e) {
-	 		location.href = '/Review/WriteForm?comu_id=${ comu_id }';
-	 	})
-   
-   </script>
+	  	const  goListEl  = document.getElementById('goList');
+	  	goListEl.addEventListener('click', function(e) {
+	  		location.href = '/Review/List?comu_id=${comu_id}';
+	  	})
+  
+  </script>
+  
    
   </body>
 
