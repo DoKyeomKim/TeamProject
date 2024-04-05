@@ -103,44 +103,37 @@ Search select {
             <button type="submit" class="quickSearchBtn">검색</button>
          </form>
       </div>
-
-
       
       <main>
-                 
-          <!--c: foreach 할듯 -->
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-   
-      </main>
+               
+      	<div class="container">
+        <div class="my-applyUserList-box">
+        	<h1>기업 목록 리스트</h1>
+           <div class="my-applyUserList-table">
+            <table class="table table-hover w-outo">
+              <thead>
+               <tr>
+                <th scope="col">순서</th>
+                <th scope="col">기업 이름</th>
+                <th scope="col">상세보기</th>
+               </tr>
+              </thead>
+               <tbody>
+                <c:forEach items="${companyList}" var="companyList">
+                 <tr>
+                  <th scope="row">${companyList.id}</th>
+                   <td>${companyList.noticeCompanyname}</td>
+                    <td><button type="button"
+                      onclick="window.location.href = '/notice/${companyList.id}';"
+                      class="btn btn-primary">공고보기</button></td>
+                  </tr>
+                 </c:forEach>
+                </tbody>
+               </table>
+              </div>
+            </div>
+           </div>
+          </main>
 
 	 <%@include file="/WEB-INF/include/footer.jsp" %>
 

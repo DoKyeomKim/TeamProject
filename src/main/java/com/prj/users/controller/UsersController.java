@@ -65,7 +65,7 @@ public class UsersController {
 		
 		return mv;
 	}
-<<<<<<< HEAD
+
 	//------------------------------------------------
 	// 회원정보 수정
 		@RequestMapping("/UpdateForm")
@@ -91,12 +91,11 @@ public class UsersController {
 		public void setUsersMapper(UsersMapper usersMapper) {
 			this.usersMapper = usersMapper;
 		}
-=======
+
 	
 	
 	@RequestMapping("/View")
 	public ModelAndView view(PUserVo pUserVo) {
->>>>>>> branch 'develop' of https://github.com/DoKyeomKim/TeamProject.git
 		
 		//PUserVo puv = usersMapper.viewPUser(pUserVo);
 		ModelAndView mv = new ModelAndView();
@@ -108,7 +107,6 @@ public class UsersController {
 
 		
 	}
-	
 	
 	
 }
