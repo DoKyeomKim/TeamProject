@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"  href="/css/header.css" />
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
  table,td {
    border: 1px solid black;
@@ -51,6 +54,6 @@ td {
      </td>
      </tr>
     </table>
-	
+<%@include file="/WEB-INF/include/footer.jsp" %>	
 </body>
 </html>
