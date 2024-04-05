@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"  href="/css/header.css" />
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
 
+<%@include file="/WEB-INF/include/footer.jsp" %>
 </body>
 </html>
