@@ -32,6 +32,11 @@
 	td:nth-of-type(3) { width : 100px; }
 	td:nth-of-type(4) { width : 200px; }
 	
+	textarea  {
+      height: 250px;
+      width : 100%;
+    }
+    
 	</style>	
 	
   </head>
@@ -41,28 +46,29 @@
   	<%@include file="/WEB-INF/include/header.jsp" %>
     
     <br>
-    <h2>기업리뷰 등록</h2>
-    <form action="/Review/Write" method="POST">
-    <input type="hidden" name="comu_id" value="${ comu_id }">
+    <h2>기업리뷰 수정</h2>
+    <form action="/Review/RUpdate" method="POST">
+    <input type="hidden" name="rno" value="${ reviewVo.rno }">
     <table>
       <tr>
         <td>이름</td>
-        <td colspan="3">${ reviewBoardVo.name }</td>
+        <td>${ reviewVo.name }</td>
+        <td rowspan="2">평점</td>
+        <td rowspan="2"><input type="text" name="star" value="${ reviewVo.star }"></td>
       </tr>
       <tr>
         <td>제목</td>
-        <td>${ reviewBoardVo.title }</td>
-        <td>평점</td>
-        <td>${ reviewBoardVo.star }</td>
+        <td><input type="text" name="title" value="${ reviewVo.title }"></td>
       </tr>
       <tr>
         <td>내용</td>
-        <td>${ reviewBoardVo.content }</td>
+        <td colspan="3"><textarea name="content">${ reviewVo.content }</textarea></td>
       </tr>
       
     <tr>
       <td colspan="4">
-    	<input type="submit" value="완료" id="goList">
+    	<input type="submit" value="완료">
+    	<input type="button" value="목록" id="goList">
       </td>
     </tr>
     
@@ -77,7 +83,7 @@
    
 	  	const  goListEl  = document.getElementById('goList');
 	  	goListEl.addEventListener('click', function(e) {
-	  		location.href = '/Review/List?comu_id=${comu_id}';
+	  		location.href = '/Review/List?comu_id=COMU01';
 	  	})
   
   </script>
