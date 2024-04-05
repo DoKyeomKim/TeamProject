@@ -1,4 +1,4 @@
-package com.prj.domain;
+package com.prj.recruits.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -10,16 +10,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <style>
-     
         body {
             margin: 0;
             padding: 0;
         }
           /* Header부분 */    
 
-         
 
-      
       /*퀵서치*/
       .quickSearch {
           display: flex;
@@ -34,14 +31,12 @@
       }
       
 
-      
-      .quickSearch select {
+Search select {
           margin-right: 30px; 
           padding: 15px;      
           width: 150px;      
       }
-      
-      
+     
       .quickSearchBtn{
           padding: 10px 15px;
          

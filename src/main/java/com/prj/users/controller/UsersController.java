@@ -52,6 +52,14 @@ public class UsersController {
 			mv.setViewName("users/update");
 			return mv;
 		}
+
+		public UsersMapper getUsersMapper() {
+			return usersMapper;
+		}
+
+		public void setUsersMapper(UsersMapper usersMapper) {
+			this.usersMapper = usersMapper;
+		}
 		
 
 		/*
