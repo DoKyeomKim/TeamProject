@@ -42,7 +42,7 @@
 </main>
 
 <aside>
-<a href="/users/view">내 정보보기</a><br>
+<a href="/users/view">내 정보보기 </a><br>
 <a href="/mypage/pmanage">이력서 관리</a><br>
 <a href="/mypage/pnow">지원 현황</a><br>
 <a href="/mypage/pscrap">채용공고 스크랩</a><br>
