@@ -5,6 +5,7 @@
   <select id="getReviewList">
   
     SELECT  COMU_ID,
+    		RNO,
 			NAME,
 			TITLE,
 			CONTENT,
@@ -32,8 +33,8 @@
 		STAR
     )
     VALUES (
-    	#{ comu_id },
-		#{ rno },
+    	'COMU01',
+		(SELECT NVL(MAX(RNO), 0) + 1 FROM REVIEWBOARD),
 		#{ name },
 		#{ title },
 		#{ content },
@@ -41,5 +42,106 @@
     )
   
   </insert>
+  
+  <select id="getFreeList">
+  
+    SELECT  COMU_ID,
+			FNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	FREEBOARD	
+  
+  </select>
+  
+  <insert id="insertFree">
+  
+    INSERT  INTO  FREEBOARD (
+    	COMU_ID,
+		FNO,
+		NAME,
+		TITLE,
+		CONTENT
+    )
+    VALUES (
+    	'COMU02',
+    	(SELECT NVL(MAX(FNO), 0) + 1 FROM FREEBOARD),
+    	#{ name },
+    	#{ title },
+    	#{ content }
+    )
+  
+  </insert>
+  
+  <select id="getReview">
+  
+    SELECT  COMU_ID,
+			RNO,
+			NAME,
+			TITLE,
+			CONTENT,
+			STAR
+	  FROM  REVIEWBOARD
+	 WHERE  RNO = #{ rno } 
+  
+  </select>
+  
+  <select id="getFree">
+  
+    SELECT  COMU_ID,
+			FNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	FREEBOARD
+	 WHERE  FNO = #{ fno }
+  
+  </select>
+  
+  <update id="updateFree">
+  
+    UPDATE  FREEBOARD
+       SET  TITLE = #{ title },
+       		CONTENT = #{ content }
+     WHERE  FNO = #{ fno }
+  
+  </update>
+  
+  <update id="updateReview">
+  
+    UPDATE  REVIEWBOARD
+       SET  TITLE = #{ title },
+            STAR = #{ star },
+            CONTENT = #{ content }
+     WHERE  RNO = #{ rno }
+  
+  </update>
+  
+  <delete id="deleteReview">
+  
+    DELETE  FROM  REVIEWBOARD
+     WHERE  RNO = #{ rno }
+  
+  </delete>
+  
+  <delete id="deleteFree">
+  
+    DELETE  FROM  FREEBOARD
+     WHERE  FNO = #{ fno }
+  
+  </delete>
+  
 
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,7 +20,7 @@
          <a href="/myPage/pProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>
       </div>
       <div class="menuList">
-         <a href="#">채용정보</a><a href="#">인재정보</a><a href="#">커뮤니티</a>
+         <a href="#">채용정보</a><a href="#">인재정보</a><a href="/Review/List?comu_id=COMU01">커뮤니티</a>
       </div>
    </header>
    
