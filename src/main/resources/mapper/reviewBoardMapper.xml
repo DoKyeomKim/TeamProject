@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.reviewboard.mapper.ReviewBoardMapper">
+
+  <select id="getReviewList">
+  
+    SELECT  COMU_ID,
+			NAME,
+			TITLE,
+			CONTENT,
+			STAR
+	  FROM  REVIEWBOARD
+  
+  </select>
+  
+  <select id="getComuList">
+  
+    SELECT  COMU_ID,
+			COMU_NAME
+	  FROM	COMU
+  
+  </select>
+  
+  <insert id="insertReview">
+  
+    INSERT  INTO  REVIEWBOARD (
+    	COMU_ID,
+		RNO,
+		NAME,
+		TITLE,
+		CONTENT,
+		STAR
+    )
+    VALUES (
+    	#{ comu_id },
+		#{ rno },
+		#{ name },
+		#{ title },
+		#{ content },
+		#{ star }
+    )
+  
+  </insert>
+
+</mapper>
