@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -16,9 +17,29 @@
       </div>
 
       <div class="userLogin">
-         <a href=""><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>
+         <a href="/myPage/pProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>
       </div>
       <div class="menuList">
+<<<<<<< HEAD
          <a href="/recruits/list">채용정보</a><a href="#">인재정보</a><a href="#">커뮤니티</a>
+=======
+         <a href="#">채용정보</a><a href="#">인재정보</a><a href="/Review/List?comu_id=COMU01">커뮤니티</a>
+>>>>>>> branch 'develop' of https://github.com/DoKyeomKim/TeamProject.git
       </div>
    </header>
+   
+   <script>
+    // 로그인 상태 확인 및 버튼 변경
+    <% 
+        Object user = session.getAttribute("login");
+        if(user != null) {
+    %>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('.userLogin').innerHTML = '<a href="/myPage"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/logout">로그아웃</a>';
+            });
+    <% } else { %>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('.userLogin').innerHTML = '<a href="/myPage"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>';
+            });
+    <% } %>
+</script>
