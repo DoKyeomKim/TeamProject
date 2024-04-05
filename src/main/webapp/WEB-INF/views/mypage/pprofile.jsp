@@ -19,10 +19,10 @@
 </main>
 
 <aside>
-<a href="/users/view">내 정보보기</a>
-<a href="">이력서 관리</a>
-<a href="">지원 현황</a>
-<a href="">채용공고 스크랩</a>
+<a href="/Users/View">내 정보보기</a>
+<a href="/MyPage/PManage">이력서 관리</a>
+<a href="/MyPage/PNow">지원 현황</a>
+<a href="/MyPage/PScrap">채용공고 스크랩</a>
 </aside>
 
 	 <%@include file="/WEB-INF/include/footer.jsp" %>

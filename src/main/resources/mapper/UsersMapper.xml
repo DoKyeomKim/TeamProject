@@ -48,6 +48,13 @@
         P_PASSWD=#{arg1, jdbcType=VARCHAR}
 </select>
 
+<select id ="getRecruitList" resultType = "com.board.users.domain.PUserVo">
+	SELECT 
+		*
 
+	FROM 
+		P_RESUME
+
+</select>
 
 </mapper>

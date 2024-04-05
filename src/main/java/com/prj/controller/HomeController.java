@@ -17,6 +17,7 @@ public class HomeController {
 	@Autowired
 	private UsersMapper usersMapper;
 	
+	// http://localhost:9090
 	@RequestMapping("/")
 	public  String   home() {
 		return "home";
@@ -30,7 +31,8 @@ public class HomeController {
 		
 		return mv;
 	}
-	
+
+	// http://localhost:9090/login
 	@RequestMapping("/login")
 	public ModelAndView login(HttpServletRequest request) {
 		
@@ -73,24 +75,6 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping("/myPage")
-	public ModelAndView mypage(HttpServletRequest request) {
-		
-			HttpSession session = request.getSession();
-			PUserVo loginUser = (PUserVo) session.getAttribute("login");
-			
-			ModelAndView mv =new ModelAndView();
-		    if (loginUser != null) {
-		        // 로그인한 사용자만 접근 가능한 기능 처리
-		        mv.setViewName("mypage/pprofile");
-		    } else {
-		        // 로그인하지 않은 사용자의 경우 로그인 페이지로 리다이렉트
-		        mv.setViewName("redirect:/loginForm");
-		    }
-			
-			return mv;
-			
-		}
 
 		
 	

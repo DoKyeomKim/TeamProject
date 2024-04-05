@@ -1,5 +1,7 @@
 package com.prj.users.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.prj.users.domain.PUserVo;
@@ -20,6 +22,13 @@ public interface UsersMapper {
 
 
 	PUserVo login(String p_id, String p_passwd);
+
+
+
+	List<PUserVo> getRecruitList();
+
+
+
 
 
 

@@ -17,7 +17,8 @@
       </div>
 
       <div class="userLogin">
-         <a href="/myPage/pProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>
+         <a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a>
+         <a href="/loginForm">로그인</a>
       </div>
       <div class="menuList">
          <a href="#">채용정보</a><a href="#">인재정보</a><a href="/Review/List?comu_id=COMU01">커뮤니티</a>
@@ -31,11 +32,12 @@
         if(user != null) {
     %>
             document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('.userLogin').innerHTML = '<a href="/myPage"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/logout">로그아웃</a>';
+                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/logout">로그아웃</a>';
             });
+            
     <% } else { %>
             document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('.userLogin').innerHTML = '<a href="/myPage"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>';
+                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>';
             });
     <% } %>
 </script>
