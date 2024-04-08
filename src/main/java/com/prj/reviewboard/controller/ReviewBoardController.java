@@ -20,6 +20,7 @@ public class ReviewBoardController {
 	@Autowired
 	private ReviewBoardMapper reviewBoardMapper;
 	
+	// 기업리뷰 목록
 	// /Review/List
 	@RequestMapping("/List")
 	public ModelAndView list( ReviewBoardVo reviewBoardVo ) {
@@ -39,6 +40,7 @@ public class ReviewBoardController {
 		
 	}
 	
+	// 기업리뷰 글 작성
 	// /Review/WriteForm
 	@RequestMapping("/WriteForm")
 	public ModelAndView writeForm( ComuVo comuVo ) {
@@ -47,7 +49,7 @@ public class ReviewBoardController {
 		String comuid = comuVo.getComu_id();
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject( comuid );
+		mv.addObject( "comuid", comuid );
 		mv.setViewName("review/rwrite");
 		return mv;
 		
@@ -69,6 +71,7 @@ public class ReviewBoardController {
 	
 	//-------------------------------------------------------------------------
 		
+	// 자유게시판 목록
 	// /Review/ListFree
 	@RequestMapping("/ListFree")
 	public ModelAndView listFree( FreeBoardVo freeBoardVo ) {
@@ -88,6 +91,7 @@ public class ReviewBoardController {
 		
 	}
 	
+	// 자유게시판 글 작성
 	// /Review/WriteFreeForm
 	@RequestMapping("/WriteFreeForm")
 	public ModelAndView writeFreeForm( ComuVo comuVo ) {
@@ -118,6 +122,7 @@ public class ReviewBoardController {
 	
 	//-------------------------------------------------------------------------
 	
+	// 기업리뷰 글 자세히 보기
 	// /Review/RView?rno=1
 	@RequestMapping("/RView")
 	public ModelAndView rView( ReviewBoardVo reviewBoardVo ) {
@@ -137,6 +142,7 @@ public class ReviewBoardController {
 		
 	}
 	
+	// 자유게시판 글 자세히 보기
 	// /Review/FView?fno=1
 	@RequestMapping("/FView")
 	public ModelAndView fView( FreeBoardVo freeBoardVo ) {
@@ -244,7 +250,6 @@ public class ReviewBoardController {
 		return mv;
 			
 	}
-	
 	
 	//-------------------------------------------------------------------------
 	

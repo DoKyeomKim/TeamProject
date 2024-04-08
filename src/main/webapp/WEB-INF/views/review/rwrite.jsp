@@ -68,6 +68,7 @@
     <tr>
       <td colspan="4">
     	<input type="submit" value="완료" id="goList">
+    	<a href="/Review/List?comu_id=COMU01">목록</a>
       </td>
     </tr>
     
