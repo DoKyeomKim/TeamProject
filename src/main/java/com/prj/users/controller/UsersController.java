@@ -65,33 +65,6 @@ public class UsersController {
 		
 		return mv;
 	}
-
-	//------------------------------------------------
-	// 회원정보 수정
-		@RequestMapping("/UpdateForm")
-		public ModelAndView updateForm() {
-			
-			ModelAndView mv  = new ModelAndView();
-			mv.setViewName("users/update");
-			return mv;
-		}
-	// 회원정보 수정 후 프로필로???????	
-		@RequestMapping("/Update")
-		public ModelAndView update() {
-			
-			ModelAndView mv  = new ModelAndView();
-			mv.setViewName("users/update");
-			return mv;
-		}
-
-		public UsersMapper getUsersMapper() {
-			return usersMapper;
-		}
-
-		public void setUsersMapper(UsersMapper usersMapper) {
-			this.usersMapper = usersMapper;
-		}
-
 	
 	
 	@RequestMapping("/View")

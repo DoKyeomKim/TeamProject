@@ -18,4 +18,5 @@ public class PResumeVo {
 	private String skill;
 	private String intro;
 	private String bookmark;
+	private int pno;
 }
