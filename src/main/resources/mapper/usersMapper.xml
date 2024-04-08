@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.users.mapper.UsersMapper">
+
+<resultMap id="getUserMap" type="java.util.HashMap">
+    <result  property="c_id"        column="c_id" />
+    <result  property="c_passwd"    column="c_passwd" />
+    <result  property="c_name"      column="c_name" />
+    <result  property="c_phone"     column="c_phone" />
+    <result  property="c_company"   column="c_company" />
+    <result  property="c_bcode"     column="c_bcode" />
+    <result  property="c_email"     column="c_email" />
+  </resultMap> 
+
+<insert id="insertPUser">
+ INSERT INTO PUSER
+ 	(
+ 	P_ID,
+ 	P_PASSWD,
+ 	P_NAME,
+ 	P_PHONE,
+ 	P_EMAIL,
+ 	SKILL
+ 	)
+ VALUES(
+ 	#{p_id},
+ 	#{p_passwd},
+ 	#{p_name},
+ 	#{p_phone},
+ 	#{p_email},
+ 	#{skill} 
+ )
+
+</insert>
+
+<select id="getPUser">
+	SELECT	 	
+	 	P_ID,
+	 	P_PASSWD,
+	 	P_NAME,
+	 	P_PHONE,
+	 	P_EMAIL,
+	 	SKILL
+	 FROM PUSER
+	 WHERE P_ID=#{p_id}
+
+</select>
+
+<select id="login">
+    SELECT
+        P_ID,
+        P_PASSWD
+    FROM PUSER
+    WHERE
+        P_ID=#{arg0, jdbcType=VARCHAR} 
+        AND 
+        P_PASSWD=#{arg1, jdbcType=VARCHAR}
+</select>
+
+<select id="getCUser">
+	SELECT	 	
+	 	C_ID,
+	 	C_PASSWD,
+	 	C_NAME,
+	 	C_PHONE,
+	 	C_COMPANY,
+	 	C_BCODE
+	 	C_EMAIL
+	 FROM CUSER
+	 WHERE C_ID=#{c_id}
+
+</select>
+
+<insert id="insertCUser">
+ INSERT INTO CUSER
+ 	(
+ 	C_ID,
+ 	C_PASSWD,
+ 	C_NAME,
+ 	C_PHONE,
+ 	C_COMPANY,
+ 	C_BCODE
+ 	C_EMAIL
+ 	)
+ VALUES(
+ 	#{c_id},
+ 	#{c_passwd},
+ 	#{c_name},
+ 	#{c_phone},
+ 	#{c_email},
+ 	#{c_bcode}, 
+ 	#{c_company} 
+ )
+
+</insert>
+
+<select id ="getResumeList" resultType = "com.prj.users.domain.PUserVo">
+	SELECT 
+		*
+
+	FROM 
+		P_RESUME
+
+</select>
+
+<select id="getCUserList" resultMap="getUserMap">
+  
+    SELECT   
+          C_ID,
+         C_PASSWD,
+         C_NAME,
+         C_PHONE,
+         C_COMPANY,
+         C_BCODE,
+         C_EMAIL
+      FROM  CUSER
+     WHERE  C_ID = #{ c_id }
+  
+  </select>
+
+<select id="getcmanage">
+
+  SELECT 
+
+</select>
+
+</mapper>

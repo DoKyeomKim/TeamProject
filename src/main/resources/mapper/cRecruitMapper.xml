@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.mypage.recruits.CRecruitMapper">
+
+
+<select id="getRecruitList" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT   CNO
+					,C_ID
+	        ,C_NAME
+	        ,C_TITLE
+	 FROM    C_RECRUIT
+</select>
+
+<select id="viewRecruit" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT  *
+	 FROM   C_RECRUIT
+	 WHERE  cno = #{cno}
+</select>
+
+<insert id="writeRecruit">
+	INSERT INTO C_RECRUIT(
+		 CNO
+	 , C_NAME
+		 GETMAN
+	 , C_TITLE
+	 , C_ADDRESS
+	 , C_INFO
+	)
+	VALUES(
+		 (SELECT NVL(CNO), 0) + 1 FROM C_RECRUIT)		 
+	 , #{cno, jdbcType=VARCHAR}
+	 , #{c_name, jdbcType=VARCHAR}
+	 , #{c_getman, jdbcType=VARCHAR}
+	 , #{c_title, jdbcType=VARCHAR}
+	 , #{c_address, jdbcType=VARCHAR}
+	 , #{c_info, jdbcType=VARCHAR}
+	)
+</insert>
+
+<select id="getUpdateRecruitByCno" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT  *
+	 FROM   C_RECRUIT
+	 WHERE  cno = #{cno}
+</select>
+
+<update id="updateRecruit">
+	UPDATE C_RECRUIT
+	
+	 SET
+	 C_TITLE=#{c_title, jdbcType=VARCHAR}
+	 C_TITLE=#{c_getman, jdbcType=VARCHAR}
+	 C_TITLE=#{c_address, jdbcType=VARCHAR}
+	 C_TITLE=#{c_info, jdbcType=VARCHAR}
+	
+	 WHERE CNO=#{cno}
+</update>
+
+<delete id="deleteRecruit">
+	DELETE FROM C_RECRUIT
+	 WHERE CNO=#{cno}
+</delete>
+
+</mapper>
