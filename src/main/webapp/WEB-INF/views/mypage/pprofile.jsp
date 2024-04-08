@@ -15,7 +15,7 @@
 <div>
 
 <h2>내 정보보기</h2>
-<form action="#" method="POST">
+<form action="#" method="POST"></form>
 <hr>
 
 <table>

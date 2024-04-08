@@ -104,8 +104,8 @@ Search select {
          </form>
       </div>
       
-      <main>
-               
+      <!-- ============메인 콘텐츠 부분================== -->
+      <main>   
       	<div class="container">
         <div class="my-applyUserList-box">
         	<h1>기업 목록 리스트</h1>

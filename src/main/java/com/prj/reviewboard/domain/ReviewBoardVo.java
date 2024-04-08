@@ -11,7 +11,7 @@ public class ReviewBoardVo {
 	private int rno;
 	private String name;
 	private int star;
-	private String comu_id;
+	// private String comu_id;
 	private String title;
 	private String content;
 	public String getComu_id() {
@@ -36,9 +36,9 @@ public class ReviewBoardVo {
 	public void setStar(int star) {
 		this.star = star;
 	}
-	public void setComu_id(String comu_id) {
-		this.comu_id = comu_id;
-	}
+	//public void setComu_id(String comu_id) {
+	//	this.comu_id = comu_id;
+	//}
 	public String getTitle() {
 		return title;
 	}

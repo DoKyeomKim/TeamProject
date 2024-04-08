@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- ===========채용공고 등록=============== -->
+    <!-- ===========채용공고 상세보기=============== -->
 
     <head>
       <style>
@@ -22,8 +22,8 @@
           text-align: center;
         }
 
-        .center button {
-          margin: 0 10px;
+        .update {
+          text-align: center;
         }
 
         .intro {
@@ -59,9 +59,9 @@
         }
       </style>
     </head>
-
+		<%@include file="/WEB-INF/include/header.jsp" %>
   <body>
-    <h2 class="title">채용공고 작성</h2>
+    <h2 class="title">채용공고 상세보기</h2>
     <br><br>
 
     <table>
@@ -79,7 +79,6 @@
         <td class="upload-container">
           <input type="file">
         <td><input type="text" placeholder="제목"></td>
-        </td>
       </tr>
       <tr>
         <td class="upload-container">
@@ -90,8 +89,8 @@
       <tr>
       </tr>
       <tr>
-      <td class="upload-container">
-      <td><input type="text" placeholder="이메일 @포함"></td>
+        <td class="upload-container">
+        <td><input type="text" placeholder="이메일 @포함"></td>
       </tr>
       <tr>
         <td class="upload-container"></td>
@@ -108,6 +107,10 @@
     <br>
 
     <div class="center">
-      <a href="/Mypage/cprofile">작성완료</a>
+      <a href="/Mypage/crecruitupdateform">수정</a>
+    </div>
+    <div class="update">
+      <a href="/Mypage/cmanage">삭제</a>
     </div>
   </body>
+  <%@include file="/WEB-INF/include/footer.jsp" %>

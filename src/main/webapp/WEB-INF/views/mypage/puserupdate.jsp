@@ -12,7 +12,7 @@
 </style>
 <body>
 	<h1 style="text-align: center; padding-top: 100px;">개인 회원정보 수정</h1>
-	<form action="" method="post" class="cjoinForm">
+	<form action="" method="post" class="cjoinForm"></form>
 	<div style="border: 1px solid skyblue;">
     <div>
     <input type="text"     name="p_id"     placeholder="아이디"      class="pjoinFormid"     value="${vo.p_id}" readonly />

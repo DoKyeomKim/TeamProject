@@ -11,7 +11,7 @@
 <body>
 <%@include file="/WEB-INF/include/header.jsp" %>
 <h2>채용공고 스크랩</h2>
-<form action="" method="POST">
+<form action="" method="POST"></form>
 <hr>
 
 		 <div class="cResume">

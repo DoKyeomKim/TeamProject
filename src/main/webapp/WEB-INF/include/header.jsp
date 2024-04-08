@@ -21,11 +21,7 @@
          <a href="/loginForm">로그인</a>
       </div>
       <div class="menuList">
-<<<<<<< HEAD
-         <a href="/recruits/list">채용정보</a><a href="#">인재정보</a><a href="#">커뮤니티</a>
-=======
          <a href="#">채용정보</a><a href="#">인재정보</a><a href="/Review/List?comu_id=COMU01">커뮤니티</a>
->>>>>>> branch 'develop' of https://github.com/DoKyeomKim/TeamProject.git
       </div>
    </header>
    

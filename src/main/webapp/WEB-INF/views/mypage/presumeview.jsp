@@ -6,7 +6,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <fieldset>
     <title>이력서 작성</title>
     <style>
       .center {
@@ -46,7 +45,7 @@
 <body>
   <h2 class="center">이력서 작성</h2>
   <div class="center">
-    <legend><input type="text" style="text-align: center;" placeholder="나를 소개하는 한마디"></legend>
+    <input type="text" style="text-align: center;" placeholder="나를 소개하는 한마디">
   </div>
   <br><br>
 
@@ -76,8 +75,6 @@
       <td>주소</td>
       <td colspan="5"><input type="text" placeholder="거주하는 동까지 입력" style="width: 100%;"> </td>
     </tr>
-
-    </tr>
   </table>
   <br>
 
@@ -99,11 +96,10 @@
     <textarea rows="10" cols="50" maxlength="1000" placeholder="1000자 이내로 작성"></textarea>
   </div>
   <br>
-
+  
   <div class="center">
     <button>완료</button>
   </div>
-  </fieldset>
 </body>
 
 </html>

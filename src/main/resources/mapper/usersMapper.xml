@@ -51,10 +51,48 @@
 <select id ="getRecruitList" resultType = "com.board.users.domain.PUserVo">
 	SELECT 
 		*
-
-	FROM 
-		P_RESUME
+	FROM   P_RESUME
 
 </select>
+
+<select id = "getcmanage" resultType = "com.board.users.domain.CUserVo">
+	SELECT
+		*
+	 From    C_RUSUME 
+</select>
+
+<select id="getCUser">
+	SELECT	 	
+	 	C_ID,
+	 	C_PASSWD,
+	 	C_NAME,
+	 	C_PHONE,
+	 	C_COMPANY,
+	 	C_BCODE,
+	 	C_EMAIL
+	 FROM CUSER
+	 WHERE P_ID=#{p_id}
+</select>
+
+<insert id="insertCResume">
+ INSERT INTO C_RESUME
+ 	(
+ 	CNO,
+  GETMAM
+ 	C_NAME,
+ 	C_TITLE,
+ 	C_ADRESS
+ 	)
+ VALUES(
+ 	#{cno},
+ 	#{getman},
+ 	#{c_name},
+ 	#{c_title},
+ 	#{c_adress}, 
+ )
+ 
+</insert>
+
+
 
 </mapper>
