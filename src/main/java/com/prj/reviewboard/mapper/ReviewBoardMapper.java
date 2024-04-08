@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.prj.domain.ComuVo;
 import com.prj.reviewboard.domain.FreeBoardVo;
 import com.prj.reviewboard.domain.ReviewBoardVo;
+import com.prj.reviewboard.domain.ServiceVo;
 
 @Mapper
 public interface ReviewBoardMapper {
@@ -34,5 +35,10 @@ public interface ReviewBoardMapper {
 	void deleteReview(ReviewBoardVo reviewBoardVo);
 
 	void deleteFree(FreeBoardVo freeBoardVo);
+
+	List<ServiceVo> getServiceList(ServiceVo serviceVo);
+
+	ServiceVo getServiceView(ServiceVo serviceVo);
+
 
 }

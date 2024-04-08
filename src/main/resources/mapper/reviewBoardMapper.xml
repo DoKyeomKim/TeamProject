@@ -131,6 +131,28 @@
   
   </delete>
   
+   
+  <select id="getServiceList">
+  
+    SELECT  SNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	SERVICEBOARD
+  
+  </select>
+  
+  <select id="getServiceView">
+  
+      SELECT 	SNO,
+				NAME,
+				TITLE,
+				CONTENT
+	    FROM	SERVICEBOARD
+	   WHERE	SNO = #{ sno } 
+  
+  </select>
+  
 
 </mapper>
 

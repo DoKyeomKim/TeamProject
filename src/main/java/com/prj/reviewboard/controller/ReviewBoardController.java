@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.prj.domain.ComuVo;
 import com.prj.reviewboard.domain.FreeBoardVo;
 import com.prj.reviewboard.domain.ReviewBoardVo;
+import com.prj.reviewboard.domain.ServiceVo;
 import com.prj.reviewboard.mapper.ReviewBoardMapper;
 
 @Controller
@@ -244,6 +245,35 @@ public class ReviewBoardController {
 			
 	}
 	
+	
+	//-------------------------------------------------------------------------
+	
+	// 고객센터 목록
+	@RequestMapping("/ListCs")
+	public ModelAndView listCs( ServiceVo serviceVo ) {
+		
+		// 고객센터 목록 조회
+		List<ServiceVo> csList = reviewBoardMapper.getServiceList( serviceVo );
+		System.out.println( "=============csList: " + csList );
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("csList", csList);
+		mv.setViewName("cs/list");
+		return mv;
+		
+	}
+	
+	// 고객센터 글 자세히 보기
+	@RequestMapping("/ViewCs")
+	public ModelAndView viewCs( ServiceVo serviceVo ) {
+		
+		// sno=1 인 글 불러오기
+		ServiceVo svVo = reviewBoardMapper.getServiceView( serviceVo );
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("svVo", svVo);
+		return mv;
+	}
 	
 	
 }
