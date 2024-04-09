@@ -12,19 +12,19 @@
 </style>
 <body>
 <h2>회원가입</h2>
-	<form action="/Users/Write" method="POST">
+	<form action="/Users/PWrite" method="POST">
 	<table>
 	 <tr>
 	   <td>아이디</td>
-	   <td><input type="text" name="p_id" value="${vo.p_id }" /></td>
+	   <td><input type="text" name="p_id" value="${p_id }" /></td>
 	 </tr>
 	 <tr>
 	   <td>비밀번호</td>
-	   <td><input type="text" name="p_passwd" value="${vo.p_passwd}"/></td>
+	   <td><input type="text" name="p_passwd" value="${p_passwd}"/></td>
 	 </tr>
 	 <tr>
 	   <td>이름</td>
-	   <td><input type="text" name="p_name" value="${vo.p_name }"/></td>
+	   <td><input type="text" name="p_name" value="${p_name }"/></td>
 	 </tr>
 	 <tr>
 	   <td>전화번호</td>

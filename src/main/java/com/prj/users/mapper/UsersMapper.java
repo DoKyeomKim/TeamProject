@@ -10,16 +10,31 @@ import com.prj.users.domain.PUserVo;
 
 @Mapper
 public interface UsersMapper {
+	
+	//로그인
+	PUserVo pLogin(String p_id, String p_passwd);
+	CUserVo cLogin(String c_id, String c_passwd);
 
+	//회원가입
 	void insertPUser(PUserVo pUserVo);
+	void insertCUser(CUserVo cUserVo);
+	
+	
 	PUserVo getPUser(PUserVo pUserVo);
 	void updatePUser(PUserVo pUserVo);
-	PUserVo login(String p_id, String p_passwd);
+	
 
 	List<PUserVo> getRecruitList();
 
 	void updateCUser(CUserVo cUserVo);
 	HashMap<String, Object> getCUserList(CUserVo cUserVo);
+	
+	
+	
+	
+	
+	
+
 
 
 

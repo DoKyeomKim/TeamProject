@@ -31,7 +31,7 @@ public class MyPageController {
 	public ModelAndView mypage(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-		PUserVo loginUser = (PUserVo) session.getAttribute("login");
+		PUserVo loginUser = (PUserVo) session.getAttribute("pLogin");
 		
 		ModelAndView mv =new ModelAndView();
 		mv.setViewName("mypage/pprofile");
@@ -155,10 +155,15 @@ public class MyPageController {
 
 		// 기업회원 마이페이지 홈(프로필) 화면
 		@RequestMapping("/CProfile")
-		public ModelAndView cprofile( CUserVo cUserVo ) {
+		public ModelAndView cprofile( HttpServletRequest request , CUserVo cUserVo) {
 			
 			HashMap<String, Object> cUserList = usersMapper.getCUserList( cUserVo );
 			System.out.println( "===============cUserList: " + cUserList );
+			
+			 
+			HttpSession session = request.getSession();
+			CUserVo loginUser = (CUserVo) session.getAttribute("cLogin");
+			
 			
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("vo", cUserList);

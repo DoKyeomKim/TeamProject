@@ -15,11 +15,9 @@
             <button type="submit">검색</button>
          </form>
       </div>
-         <a href="/MyPage/PProfile">pprofile</a>
-         <a href="/MyPage/CProfile?c_id=ROSER">cprofile</a>
-
       <div class="userLogin">
-         <a href="/loginForm">로그인</a>
+         <a href="/Users/LoginForm">profile</a>
+         <a href="/Users/LoginForm">로그인</a>
       </div>
       <div class="menuList">
 
@@ -28,19 +26,20 @@
       </div>
    </header>
    
-   <script>
-    // 로그인 상태 확인 및 버튼 변경
-    <% 
-        Object user = session.getAttribute("login");
-        if(user != null) {
-    %>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/logout">로그아웃</a>';
-            });
-            
-    <% } else { %>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/loginForm">로그인</a>';
-            });
-    <% } %>
-</script>
+
+    <!--  로그인 상태 확인 및 버튼 변경 -->
+    
+   <script>document.addEventListener('DOMContentLoaded', function() {
+        <% 
+            Object puser = session.getAttribute("pLogin");
+            Object cuser = session.getAttribute("cLogin");
+
+            if (puser != null) { %>
+                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/Users/Logout">로그아웃</a>';
+        <%  } else if (cuser != null) { %>
+                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/CProfile?c_id=${sessionScope.cLogin.c_id}"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/Users/Logout">로그아웃</a>';
+        <%  } else { %>
+                document.querySelector('.userLogin').innerHTML = '<a href="/Users/LoginForm"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/Users/LoginForm">로그인</a>';
+        <%  } %>
+    });
+   </script> 

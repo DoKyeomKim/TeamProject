@@ -8,27 +8,24 @@
 </head>
 <body>
 
-	<form action="/login" method="POST">
+	<form action="/Users/CLogin" method="POST">
 	<table>
+	 	<h2> 기업 로그인 </h2>	 
 	 
-	 <tr>
-	   <td><input type="button" name="개인용" />개인용</td>
-	   <td><input type="button" name="기업용" />기업용</td>
 
-	 </tr>
 	 <tr>
 	   <td>아이디</td>
-	   <td><input type="text" name="p_id" /></td>
+	   <td><input type="text" name="c_id" /></td>
 	 </tr>
 	 <tr>
 	   <td>비밀번호</td>
-	   <td><input type="password" name="p_passwd" /></td>
+	   <td><input type="password" name="c_passwd" /></td>
 	 </tr>
 	 
 	 <tr>
 	   <td colspan="2">
 	    <input type="submit" value="로그인" />
-	    <a href="/Users/WriteForm">회원가입</a>
+	    <a href="/Users/CWriteForm">회원가입</a>
 	   </td>
 	 </tr>
 	

@@ -18,7 +18,7 @@
  	P_ID,
  	P_PASSWD,
  	P_NAME,
- 	P_PHONE,
+ 	P_PHONE,	
  	P_EMAIL,
  	SKILL
  	)
@@ -29,6 +29,31 @@
  	#{p_phone},
  	#{p_email},
  	#{skill} 
+ )
+
+</insert>
+
+
+<insert id="insertCUser">
+ INSERT INTO CUSER
+ 	(
+ 	C_ID,
+ 	C_PASSWD,
+ 	C_NAME,
+ 	C_PHONE,
+ 	C_COMPANY,
+ 	C_BCODE,
+ 	C_EMAIL
+ 	)
+ 	
+ VALUES(
+ 	#{c_id},
+ 	#{c_passwd},
+ 	#{c_name},
+ 	#{c_phone},
+ 	#{c_company},
+ 	#{c_bcode},
+ 	#{c_email} 
  )
 
 </insert>
@@ -46,7 +71,7 @@
 
 </select>
 
-<select id="login">
+<select id="pLogin">
     SELECT
         P_ID,
         P_PASSWD
@@ -55,6 +80,18 @@
         P_ID=#{arg0, jdbcType=VARCHAR} 
         AND 
         P_PASSWD=#{arg1, jdbcType=VARCHAR}
+</select>
+
+
+<select id="cLogin">
+    SELECT
+        C_ID,
+        C_PASSWD
+    FROM CUSER
+    WHERE
+        C_ID=#{arg0, jdbcType=VARCHAR} 
+        AND 
+        C_PASSWD=#{arg1, jdbcType=VARCHAR}
 </select>
 
 
