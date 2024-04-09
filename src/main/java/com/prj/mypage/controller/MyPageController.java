@@ -78,7 +78,7 @@ public class MyPageController {
 			mv.setViewName("mypage/presumewrite");
 			
 			return mv;
-			
+			 
 		}
 		// 이력서 작성
 		@RequestMapping("/PResumeWrite")
