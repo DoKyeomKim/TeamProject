@@ -84,25 +84,33 @@ Camel Case
 <hr>
 
 주석 규칙
+<ul>
 <li>한줄을 "//"로 적고, 그 이상은 "/* */"로 표기</li>
 <li>주석 필요 시 위치는 코드 바로 위 기재</li>
+</ul>
 <hr>
 
 변수명
+<ul>
 <li>배열이 들어가는 변수면 마지막에 List.</li>
 <li>통신이 쓰인 변수는 data.</li>
 <li>함수는 동사가 제일 먼저 오고 뒤에 명사가 붙는 형식</li>
 <hr>
+</ul>
 
 브랜치 전략
+<ul>
 <li>main --> 실제 올라가는 배포용 Branch</li>
 <li>develop - 배포 전 집계 및 병합용 Branch (현재 브랜치 충돌로 인해 "total" 브랜치 이용중</li>
 <li>개인 Last Name을 Branch명으로 설정(기능 개발용 Branch ex: 1-kim , 2-park)</li>
 <hr>
+</ul>
 
 Merge 규칙
+<ul>
 <li>개인 브랜치로 Push 후 Pull Request 날리기</li>
 <li>코드 작성자가 리뷰를 한 후 Merge</li>
+</ul>
 <br>
 <br>
 <br>
