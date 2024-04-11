@@ -40,5 +40,5 @@ public interface ReviewBoardMapper {
 
 	ServiceVo getServiceView(ServiceVo serviceVo);
 
-
+	
 }

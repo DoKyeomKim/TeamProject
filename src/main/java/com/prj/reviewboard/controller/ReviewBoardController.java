@@ -277,6 +277,7 @@ public class ReviewBoardController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("svVo", svVo);
+		mv.setViewName("cs/view");
 		return mv;
 	}
 	

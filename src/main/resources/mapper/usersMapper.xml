@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prj.users.mapper.UsersMapper">
 
+
+  <resultMap id="getPUserMap" type="java.util.HashMap">
+    <result  property="p_id"        column="p_id" />
+    <result  property="p_passwd"    column="p_passwd" />
+    <result  property="p_name"      column="p_name" />
+    <result  property="p_phone"     column="p_phone" />
+    <result  property="p_email"     column="p_email" />
+    <result  property="skill"       column="skill" />
+  </resultMap>
+
+
   <resultMap id="getUserMap" type="java.util.HashMap">
     <result  property="c_id"        column="c_id" />
     <result  property="c_passwd"    column="c_passwd" />
@@ -11,6 +22,8 @@
     <result  property="c_bcode"     column="c_bcode" />
     <result  property="c_email"     column="c_email" />
   </resultMap>
+  
+  
 
 <insert id="insertPUser">
  INSERT INTO PUSER
@@ -94,7 +107,29 @@
         C_PASSWD=#{arg1, jdbcType=VARCHAR}
 </select>
 
+<select id="getPUserList" resultMap="getPUserMap">
+  	 SELECT   
+    		P_ID,
+			P_PASSWD,
+			P_NAME,
+			P_PHONE,
+			P_EMAIL,
+			SKILL
+      FROM  PUSER
+     WHERE  P_ID = #{ p_id }
+  </select>
 
+<update id="updatePUser">
+UPDATE PUSER
+   SET 
+	   P_PASSWD = #{p_passwd},
+	   P_NAME   = #{p_name},
+	   P_PHONE  = #{p_phone},
+	   P_EMAIL  = #{p_email},
+	   SKILL    = #{skill}
+ WHERE P_ID = #{ p_id }
+
+</update>
 
 
   <select id="getCUserList" resultMap="getUserMap">

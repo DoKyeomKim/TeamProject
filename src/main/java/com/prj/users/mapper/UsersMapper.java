@@ -28,6 +28,7 @@ public interface UsersMapper {
 
 	void updateCUser(CUserVo cUserVo);
 	HashMap<String, Object> getCUserList(CUserVo cUserVo);
+	HashMap<String, Object> getPUserList(PUserVo pUserVo);
 	
 	
 	

@@ -21,7 +21,7 @@
       </div>
       <div class="menuList">
 
-         <a href="#">채용정보</a><a href="#">인재정보</a><a href="/Review/List?comu_id=COMU01">커뮤니티</a>
+         <a href="/Recruits/List">채용정보</a><a href="/Resumes/List">인재정보</a><a href="/Review/List?comu_id=COMU01">커뮤니티</a>
 
       </div>
    </header>
@@ -35,7 +35,7 @@
             Object cuser = session.getAttribute("cLogin");
 
             if (puser != null) { %>
-                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/Users/Logout">로그아웃</a>';
+                document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/PProfile?p_id=${sessionScope.pLogin.p_id}"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/Users/Logout">로그아웃</a>';
         <%  } else if (cuser != null) { %>
                 document.querySelector('.userLogin').innerHTML = '<a href="/MyPage/CProfile?c_id=${sessionScope.cLogin.c_id}"><img src="user-icon.png" alt="사용자 아이콘"></a><a href="/Users/Logout">로그아웃</a>';
         <%  } else { %>

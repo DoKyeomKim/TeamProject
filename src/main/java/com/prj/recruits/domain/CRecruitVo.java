@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CResumeVo {
+public class CRecruitVo {
+	private int cno;
 	private String c_id;
 	private String c_company;
 	private String c_title;

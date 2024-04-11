@@ -47,7 +47,7 @@ Search select {
            display: grid;
            grid-template-columns: repeat(3, 1fr);
            gap: 10px;
-         padding: 200px 500px;
+           padding: 100px 500px;
        }
    
        .cResume {
@@ -61,12 +61,22 @@ Search select {
        .cResume img {
            max-width: 100%;
            height: auto;
-           margin-bottom: 50px;
        }
    
        .cResume .cName, .cResume .title {
            font-size: 16px;
            margin-bottom: 5px;
+       }
+       
+       .tablelist {
+       		border: 1px solid black;
+       		border-collapse: collapse;       
+       		width: 400px;
+       }
+       .tablelist tr, 
+       .tablelist td {
+       		border: 1px solid black;
+       		border-collapse: collapse;       
        }
              
     </style>
@@ -108,28 +118,34 @@ Search select {
                
       	<div class="container">
         <div class="my-applyUserList-box">
-        	<h1>기업 목록 리스트</h1>
+        
+        <h1>채용 공고 리스트</h1>
+        
            <div class="my-applyUserList-table">
-            <table class="table table-hover w-outo">
-              <thead>
+           
+            <table class="tablelist">
+            
                <tr>
-                <th scope="col">순서</th>
-                <th scope="col">기업 이름</th>
-                <th scope="col">상세보기</th>
+	               <td>번호</td>
+	               <td>기업 이름</td>
+	               <td colspan="2">공고 제목</td>
                </tr>
-              </thead>
-               <tbody>
-                <c:forEach items="${companyList}" var="companyList">
-                 <tr>
-                  <th scope="row">${companyList.id}</th>
-                   <td>${companyList.noticeCompanyname}</td>
-                    <td><button type="button"
-                      onclick="window.location.href = '/notice/${companyList.id}';"
-                      class="btn btn-primary">공고보기</button></td>
-                  </tr>
-                 </c:forEach>
-                </tbody>
+              
+               <c:forEach var="recruitList" items="${ recruitList }" >
+               	<tr>
+                  <td>${ recruitList.cno }</td>
+                  <td>${ recruitList.c_company }</td>
+                  <td>${ recruitList.c_title }</td>
+                  
+                  <td>
+                  <a href="/Recruits/View?cno=${ recruitList.cno }">보기</a>
+                  </td>
+                </tr>  
+                
+               </c:forEach>
+                
                </table>
+               
               </div>
             </div>
            </div>

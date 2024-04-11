@@ -8,48 +8,147 @@
 <link rel="stylesheet"  href="/css/header.css" />
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<style>
+
+	main {
+	  display: inline-block;
+	  margin-bottom: 50px;
+	}
+	aside {
+	  width: 10%;
+	  line-height: 1.6;	  
+	  border-left: 4px solid maroon;
+	  float: left;
+	  margin-right: 10px;
+	  text-align: center;
+	  padding-top: 5%;
+	}
+	article {
+	  width: 1000px;
+	  line-height: 1.6;	  
+	  text-align: center;
+	}
+	
+	#profile1 {
+	  border: 1px solid #666;
+	  margin-right: 10px;
+	}
+	
+	#profile1 tr:nth-of-type(1) td:nth-of-type(1){
+	  border: 1px solid black;
+	  padding: 30px;
+	  height: 130px;
+	}
+	
+	#profile3 {
+	  border: 1px solid #666;
+	}
+	
+	#profile3 td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	  padding: 10px;
+	}
+	
+	#profile3 tr td:nth-of-type(2) {
+	  width: 200px;
+	}
+	
+	#span {
+	  width: 70%;
+	  border: 1px solid #666;
+	  font-size: 20px;
+	}
+
+</style>
+
 </head>
+
 <body>
-<%@include file="/WEB-INF/include/header.jsp" %>
-<main>
-<div>
 
-<h2>내 정보보기</h2>
-<form action="#" method="POST">
-<hr>
+	<%@include file="/WEB-INF/include/header.jsp" %>
+	
+	<main style="display: flex;">
+	
+	<aside>
+	  <nav>
+		<a href="/MyPage/PUpdateForm?p_id=${ vo.p_id }">정보수정</a><br />
+		<a href="/MyPage/PManage">이력서 관리</a><br />
+		<a href="/MyPage/PNow">지원 현황</a><br />
+		<a href="/MyPage/PScrap">채용공고 스크랩</a>
+	  </nav>	
+	</aside>
+	
+	<section>
+	<article>
+	<h2>내 정보보기</h2>
+	<hr />
+	
+		<div style="display: flex;">
+		<table id="profile1">
+			<tr>
+				<td>사진변경</td>
+			</tr>
+			<tr>	
+				<td><input type="file" name="photo" value="upload"></td>
+			</tr>
+		</table>
+		
+		<%-- <table id="profile2">
+			<tr>
+			  <td>
+			  <input type="text" name="ptitle"  value="${p_title}" placeholder="나를 소개하는 한마디"><br />
+			  <input type="text" name="skill"  value="${skill}" placeholder="보유기술">
+			  </td>
+			</tr>
+		</table> --%>
+		
+		<table id="profile3">
+			<tr>
+				<td>아이디</td>
+				<td>${ vo.p_id }</td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td>${ vo.p_name }</td>
+			</tr>
+			<tr>
+				<td>연락처</td>
+				<td>${ vo.p_phone }</td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td>${ vo.p_email }</td>
+			</tr>
+			<tr>
+				<td>보유스킬</td>
+				<td>${ vo.skill }</td>
+			</tr>
+			
+		</table>
+		</div>
+		
+		<br /><br />
+		
+		<div id="span">
+			<span>현황</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>지원: 00</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>공고 스크랩: 00</span>
+		</div>
+		<!-- <table id="profile4">
+			<tr>
+				<td>현황</td>
+				<td>지원자 수</td>
+				<td>인재 스크랩</td>
+			</tr>
+		</table> -->
+	</article>
+	</section>	
 
-<table>
-<tr>
-<td>사진변경</td><br>
-<td><input type="file" name="photo" value="upload"></td>
-</tr>
-</table>
-<table>
-<tr>
-<td><input type="text" name="ptitle"  value="${p_title}" placeholder="나를 소개하는 한마디"></td>
-<td><input type="text" name="skill"  value="${skill}" placeholder="보유기술"></td>
-</tr>
-</table>
-<table>
-<tr>
-<td colspan="2">지원완료</td>
-<td colspan="2">관심기업</td>
-<td colspan="2">공고스크랩</td>
-</tr>
-</table>
-
-</div>
-</main>
-
-<aside>
-
-<a href="/Users/View">내 정보보기</a>
-<a href="/MyPage/PManage">이력서 관리</a>
-<a href="/MyPage/PNow">지원 현황</a>
-<a href="/MyPage/PScrap">채용공고 스크랩</a>
-</aside>
+	</main>
 
     <%@include file="/WEB-INF/include/footer.jsp" %>
-   
+    
+
 </body>
 </html>

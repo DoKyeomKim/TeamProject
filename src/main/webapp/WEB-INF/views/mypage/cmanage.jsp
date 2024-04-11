@@ -91,17 +91,17 @@ body {
 				<br>
 				<br>
 				<br>
-				<li><a href="/Users/View">내 정보수정</a></li>
+				<li><a href="/MyPage/CUpdateForm?c_id=${ vo.c_id }">기업정보수정</a></li>
 				<br>
-				<li><a href="/MyPage/PManage">이력서관리</a></li>
+				<li><a href="/MyPage/CManage">채용공고관리</a></li>
 				<br>
-				<li><a href="/MyPage/PNow">지원현황</a></li>
+				<li><a href="/MyPage/CNow">지원현황</a></li>
 				<br>
-				<li><a href="/MyPage/PScrap">채용공고 스크랩</a></li>
+				<li><a href="/MyPage/CScrap">채용인재 스크랩</a></li>
 			</ul>
 		</aside>
 		<article class="main-content">
-			<h2>내 이력서 관리</h2>
+			<h2>채용공고 관리</h2>
 			<h4>
 				<br>
 				<span>총 OO건</span>
@@ -111,24 +111,24 @@ body {
 						<th></th>
 						<th>번호</th>
 						<th>이름</th>
-						<th>이력서 제목</th>
+						<th>공고 제목</th>
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
-				<c:forEach var="resume" items="${pResumeList}">
+				<c:forEach var="recruit" items="${cRecruitList}">
 					<tr>
 						<td><input type="checkbox"></td>
-						<td>${resume.pno }</td>
-						<td>${resume.p_name}</td>
-						<td><a href="/MyPage/PResumeView?pno=${resume.pno }">${resume.p_title}</td>
-						<td><a href="/MyPage/PResumeUpdateForm?pno=${resume.pno }">수정</a></td>
-						<td><a href="/MyPage/PResumeDelete?pno=${resume.pno }">삭제</a></td>
-					</tr>
+						<td>${recruit.cno}</td>
+						<td>${recruit.c_company}</td>
+						<td><a href="/MyPage/CRecruitView?cno=${recruit.cno }">${recruit.c_title}</td>
+						<td><a href="/MyPage/CRecruitUpdateForm?cno=${recruit.cno}">수정</a></td>
+						<td><a href="/MyPage/CRecruitDelete?cno=${recruit.cno}">삭제</a></td>
+					</tr>	
 				</c:forEach>
 			</table>
 			<br>
 			<div class="button-container">
-				<a href="/MyPage/PResumeWriteForm">이력서 작성하기</a>
+				<a href="/MyPage/CRecruitWriteForm" class="cwrite-btn">공고등록</a>
 			</div>
 		</article>
 		<aside class="right-sidebar">ad</aside>
