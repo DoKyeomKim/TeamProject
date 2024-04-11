@@ -30,6 +30,10 @@
 	td:nth-of-type(1) { width : 100px; }
 	td:nth-of-type(2) { width : 100px; }
 	td:nth-of-type(3) { width : 400px; }
+	
+	#goWrite {
+		
+	}
     	
 	</style>	
 	

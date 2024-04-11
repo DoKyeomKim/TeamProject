@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>채용공고 관리</title>
+<title>이력서 관리</title>
 <link rel="stylesheet"  href="/css/header.css" />
+
 <style>
 article {
 	float: left;
@@ -38,7 +39,7 @@ a.active {
 }
 
 .left-sidebar, .right-sidebar {
-	background-color: #f0f0f0;
+	background-color: #EDF9FF;
 	padding: 20px;
 	height: 100vh;
 	overflow-y: auto;
@@ -102,6 +103,7 @@ body {
 		</aside>
 		<article class="main-content">
 			<h2>내 이력서 관리</h2>
+			<hr>			
 			<h4>
 				<br>
 				<span>총 OO건</span>

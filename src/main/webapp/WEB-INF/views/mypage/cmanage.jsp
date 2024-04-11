@@ -38,7 +38,7 @@ a.active {
 }
 
 .left-sidebar, .right-sidebar {
-	background-color: #f0f0f0;
+	background-color: #EDF9FF;
 	padding: 20px;
 	height: 100vh;
 	overflow-y: auto;
@@ -52,6 +52,12 @@ a.active {
 	display: flex;
 	flex-direction: column;
 }
+
+	article {
+		width: 1000px;
+		line-height: 1.6;	  
+	  text-align: center;
+	}
 
 .main-content {
 	padding: 20px;
@@ -97,9 +103,10 @@ body {
 				<br>
 				<li><a href="/MyPage/CNow">지원현황</a></li>
 				<br>
-				<li><a href="/MyPage/CScrap">채용인재 스크랩</a></li>
+				<li><a href="/MyPage/CScrap">이력서 스크랩</a></li>
 			</ul>
 		</aside>
+		<section>
 		<article class="main-content">
 			<h2>채용공고 관리</h2>
 			<h4>
@@ -132,9 +139,9 @@ body {
 			</div>
 		</article>
 		<aside class="right-sidebar">ad</aside>
+		</section>
 	</div>
 	<%@include file="/WEB-INF/include/footer.jsp"%>
-	</form>
 </body>
 
 </html>

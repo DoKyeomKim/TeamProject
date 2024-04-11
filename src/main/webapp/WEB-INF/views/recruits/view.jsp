@@ -53,6 +53,11 @@
           font-weight: bold;
         }
         
+        .center{
+        	display: flex;
+        	justify-content: center;
+        }
+        
         #viewtb {
     	  padding: 20px;
           width: 824px;
@@ -82,7 +87,7 @@
 <body>
 
     <%@include file="/WEB-INF/include/header.jsp" %>
-
+		<form action="" method="POST">
     <h2 class="title">채용공고 상세보기</h2>
     <br><br>
 
@@ -127,7 +132,10 @@
       </textarea>
     </div>
     <br>
-
+    <div class="center">
+    <button type="submit">지원하기</button>
+		</div>
+		</form>
     <!-- <div class="update">
       <a href="/Mypage/crecruitupdateform">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="/Mypage/cmanage">삭제</a>

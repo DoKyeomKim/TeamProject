@@ -76,13 +76,13 @@
 		<a href="/MyPage/CUpdateForm?c_id=${ vo.c_id }">정보 수정</a><br />
 		<a href="/MyPage/CManage">공고 관리</a><br />
 		<a href="/MyPage/CNow">지원 현황</a><br />
-		<a href="/MyPage/CScrap">인재 스크랩</a>
+		<a href="/MyPage/CScrap">이력서 스크랩</a>
 	  </nav>	
 	</aside>
 	
 	<section>
 	<article>
-	<h2>내 정보보기</h2>
+	<h2>기업 정보</h2>
 	<hr />
 	
 		<div style="display: flex;">

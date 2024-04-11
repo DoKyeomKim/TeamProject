@@ -8,12 +8,17 @@
 <link rel="stylesheet"  href="/css/header.css" />
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<style>
+<style>	
+	article {
+		float: left;
+		width: 80%;
+	}
 
 	main {
 	  display: inline-block;
 	  margin-bottom: 50px;
 	}
+	
 	aside {
 	  width: 10%;
 	  line-height: 1.6;	  
@@ -23,15 +28,57 @@
 	  text-align: center;
 	  padding-top: 5%;
 	}
+	
+	.left-sidebar {
+		background-color: #EDF9FF;
+		padding: 20px;
+		height: 100vh;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
+	.left-sidebar ul {
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+	flex-direction: column;
+}
+	.right-sidebar {
+		background-color: #EDF9FF;
+		padding: 20px;
+		height: 100vh;
+		position: absolute;
+    right: 0;
+    margin-top:0px;
+		}
+	
 	article {
 	  width: 1000px;
 	  line-height: 1.6;	  
-	  text-align: center;
 	}
+	
+	.main-content {
+		padding: 20px;
+	}
+	
+	#menu {
+		border: solid black 1px;
+		border-collapse: collapse;
+		
+	}
+	
+	#menu tr,
+	#menu td{
+		border: 1px solid black;
+		border-collapse: collapse;
+		text-align: center;
+	}
+	
 	
 	#profile1 {
 	  border: 1px solid #666;
-	  margin-right: 10px;
+	  margin-right: 5px;
+	  margin-left: 218px;
 	}
 	
 	#profile1 tr:nth-of-type(1) td:nth-of-type(1){
@@ -40,17 +87,17 @@
 	  height: 130px;
 	}
 	
-	#profile3 {
+	#profile2 {
 	  border: 1px solid #666;
 	}
 	
-	#profile3 td {
+	#profile2 td {
 	  border: 1px solid black;
 	  border-collapse: collapse;
 	  padding: 10px;
 	}
 	
-	#profile3 tr td:nth-of-type(2) {
+	#profile2 tr td:nth-of-type(2) {
 	  width: 200px;
 	}
 	
@@ -58,6 +105,7 @@
 	  width: 70%;
 	  border: 1px solid #666;
 	  font-size: 20px;
+	   margin: 0 auto;
 	}
 
 </style>
@@ -70,20 +118,31 @@
 	
 	<main style="display: flex;">
 	
-	<aside>
-	  <nav>
-		<a href="/MyPage/PUpdateForm?p_id=${ vo.p_id }">정보수정</a><br />
-		<a href="/MyPage/PManage">이력서 관리</a><br />
-		<a href="/MyPage/PNow">지원 현황</a><br />
-		<a href="/MyPage/PScrap">채용공고 스크랩</a>
-	  </nav>	
+	<aside class="left-sidebar">
+	  <ul>
+	  	<br>
+	  	<li>개인회원</li>
+	  	<br>
+				<br>
+				<li><a href="/MyPage/PUpdateForm?p_id=${ vo.p_id }">정보수정</a></li>
+				<br>
+				<li><a href="/MyPage/PManage">이력서 관리</a></li>
+				<br>
+				<li><a href="/MyPage/PNow">지원 현황</a></li>
+				<br>
+				<li><a href="/MyPage/PScrap">채용공고 스크랩</a></li>
+	  </ul>	
+	</aside>
+	<aside class="right-sidebar">
+	  
 	</aside>
 	
 	<section>
 	<article>
 	<h2>내 정보보기</h2>
-	<hr />
+	<hr>
 	
+
 		<div style="display: flex;">
 		<table id="profile1">
 			<tr>
@@ -103,7 +162,7 @@
 			</tr>
 		</table> --%>
 		
-		<table id="profile3">
+		<table id="profile2">
 			<tr>
 				<td>아이디</td>
 				<td>${ vo.p_id }</td>
@@ -130,11 +189,13 @@
 		
 		<br /><br />
 		
-		<div id="span">
-			<span>현황</span>&nbsp;&nbsp;&nbsp;&nbsp;
-			<span>지원: 00</span>&nbsp;&nbsp;&nbsp;&nbsp;
-			<span>공고 스크랩: 00</span>
-		</div>
+		<table id="menu">
+			<tr>
+				<td>현황</td>
+				<td>지원: 00</td>
+				<td>공고 스크랩: 00</td>
+			</tr>
+			</table>
 		<!-- <table id="profile4">
 			<tr>
 				<td>현황</td>

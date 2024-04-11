@@ -1,67 +1,40 @@
 @charset "UTF-8";
 
-        .header {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            background-color: black;
-            color: #fff;
-            padding: 50px 50px;
-            align-items: center;
-        }
-        .header img {
-            max-width: 100%;
-            height: auto;
-        }
-        .logo{
-           margin-left : 30px;
-        }
-                 
-      .search {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-      }
-      
-      .search input[type="text"] {
-          padding: 19px;  
-          margin-left: -150px;
-          flex-grow: 1.9; 
-      }
-      
-      .search button {
-          padding: 19px 25px;  
-          background-color: #007BFF;
-          color: white;
-          border: none;
-          cursor: pointer;
-      }
-         
-         .userLogin, .menuList {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: 20px;
-        }
-        
-        .menuList {
-           margin-top: 50px;
 
-        }
-        
-        .userLogin a, .menuList a {
-            margin-left: 15px; 
-            color: white;
-            text-decoration: none;
-        }
-        
-        .menuList a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 15px; 
-          font-size: 18px; 
-          text-decoration: none;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          }
+header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px; 
+    background-color: #EDF9FF;
+    padding: 50px 200px;
+}
+
+
+.header img {
+   max-width: 100%;
+   height: auto;
+   margin-left: 150px;
+}
+
+.menuList {
+   display: grid;
+   grid-template-columns: 100px 100px 100px;
+   gap: 20px; /* 갭 설정 */
+   margin-left:-180px;
+   height:auto;
+}
+
+.userLogin {
+   display: flex;
+}
+
+.userLogin img{
+   height : 50px;
+}
+
+button {
+   padding: 10px 15px;
+   margin-left: 10px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}

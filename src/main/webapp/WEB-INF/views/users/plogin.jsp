@@ -5,34 +5,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+body {
+background-color : #EDF9FF;
+}
+</style>
 </head>
 <body>
 
-	<form action="/Users/PLogin" method="POST">
-	<table>
-	<h2> 개인 로그인 </h2>	 
+   <form action="/Users/PLogin" method="POST">
+   <table>
+   <h2> 개인 로그인 </h2>    
 
-	 <tr>
-	   <td>아이디</td>
-	   <td><input type="text" name="p_id" /></td>
-	 </tr>
-	 <tr>
-	   <td>비밀번호</td>
-	   <td><input type="password" name="p_passwd" /></td>
-	 </tr>
-	 
-	 <tr>
-	   <td colspan="2">
-	    <input type="submit" value="로그인" />
-	    <a href="/Users/PWriteForm">회원가입</a>
-	   </td>
-	 </tr>
-	
-	</table>	
-	</form>   
-	
+    <tr>
+      <td>아이디</td>
+      <td><input type="text" name="p_id" /></td>
+    </tr>
+    <tr>
+      <td>비밀번호</td>
+      <td><input type="password" name="p_passwd" /></td>
+    </tr>
+    
+    <tr>
+      <td colspan="2">
+       <input type="submit" value="로그인" />
+       <a href="/Users/PWriteForm">회원가입</a>
+      </td>
+    </tr>
+   
+   </table>   
+   </form>   
 
-  
 
 </body>
 </html>
