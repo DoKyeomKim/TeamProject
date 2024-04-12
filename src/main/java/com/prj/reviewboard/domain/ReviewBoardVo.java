@@ -14,10 +14,11 @@ public class ReviewBoardVo {
 	// private String comu_id;
 	private String title;
 	private String content;
+	
 	public String getComu_id() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	public int getRno() {
 		return rno;
 	}
@@ -36,9 +37,9 @@ public class ReviewBoardVo {
 	public void setStar(int star) {
 		this.star = star;
 	}
-	//public void setComu_id(String comu_id) {
-	//	this.comu_id = comu_id;
-	//}
+		//public void setComu_id(String comu_id) {
+		//	this.comu_id = comu_id;
+		//}
 	public String getTitle() {
 		return title;
 	}
@@ -51,4 +52,5 @@ public class ReviewBoardVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 }

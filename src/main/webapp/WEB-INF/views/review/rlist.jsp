@@ -51,7 +51,7 @@
     
     <table id="comu">
       <tr>
-        <td>[<a href="/Review/List?comu_id=COMU01">기업리뷰</a>]</td>
+        <td>[<a href="/Review/List?comu_id=COMU01&nowpage=1">기업리뷰</a>]</td>
         <td>[<a href="/Review/ListFree?comu_id=COMU02">자유게시판</a>]</td>
       </tr>
     </table>
@@ -62,10 +62,10 @@
         <td>작성자/기업명</td>
         <td>평점</td>
       </tr>
-      <c:forEach var="review" items="${ reviewList }">
+      <c:forEach var="review" items="${ response.list }">
 	      <tr>
 	        <td>${ review.rno }</td>
-	        <td><a href="/Review/RView?rno=${ review.rno }">${ review.name }</a></td>
+	        <td><a href="/Review/RView?rno=${ review.rno }&nowpage=${nowpage}">${ review.name }</a></td>
 	        <td>${ review.star }</td>
 	      </tr>
       </c:forEach>
@@ -73,6 +73,7 @@
     <div>
     	<input type="button" value="글 작성" id="goWrite">
     </div>
+    <%@include file="/WEB-INF/include/paging.jsp" %>
     <%@include file="/WEB-INF/include/footer.jsp" %>
       
    </main>

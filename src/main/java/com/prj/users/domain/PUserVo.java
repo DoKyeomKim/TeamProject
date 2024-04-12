@@ -1,5 +1,7 @@
 package com.prj.users.domain;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,7 @@ public class PUserVo {
 	private String p_phone;
 	private String p_email;
 	private String skill;
+	private List<String> skillList;
 	public String getP_id() {
 		return p_id;
 	}

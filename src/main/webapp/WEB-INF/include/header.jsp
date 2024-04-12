@@ -25,7 +25,7 @@
 
          <a href="#">채용정보</a>
          <a href="/Resumes/List">인재정보</a>
-         <a href="/Review/List?comu_id=COMU01">커뮤니티</a>
+         <a href="/ReviewBoardPaging/List?comu_id=COMU01&nowpage=1">커뮤니티</a>
 
       </div>
    </header>
