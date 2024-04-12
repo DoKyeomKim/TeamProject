@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.mypage.mapper.CScrapMapper">
+
+
+<!-- 스크랩 기능 -->
+<insert id="scrap">
+
+	INSERT INTO C_SCRAP (
+		SCRAPNO,
+		MEMBER_ID,
+		BNO
+	) 
+	VALUES (
+		(SELECT NVL(MAX(SCRAPNO), 0) + 1 FROM C_SCRAP),
+		#{ MEMBER_ID },
+		#{ BNO }
+	)
+
+</insert>
+
+<!-- 스크랩 취소 -->
+<delete id="scrapCancel">
+
+	DELETE	FROM C_SCRAP
+	WHERE 	BNO = #{ BNO }
+	 AND 	MEMBER_ID = #{ MEMBER_ID }
+
+</delete>
+
+<!-- 게시글의 스크랩 수 -->
+<select id="scrapCount" resultType="int">
+
+	SELECT  COUNT(*)
+	FROM 	C_SCRAP
+	WHERE 	BNO = #{ BNO }
+
+</select>
+
+<!-- 중복방지 -->
+<select id="scrapCheck" resultType="int">
+	SELECT  COUNT(*)
+	FROM 	C_SCRAP
+	WHERE 	BNO = #{ BNO }
+	 AND 	MEMBER_ID = #{ MEMBER_ID }
+</select>
+
+
+</mapper>

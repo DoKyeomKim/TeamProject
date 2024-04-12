@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.recruits.mapper.PResumeMapper">
+
+
+	<select id="getResumeList"
+		resultType="com.prj.recruits.domain.PResumeVo">
+		SELECT PNO,P_ID, P_NAME, P_TITLE
+		FROM P_RESUME
+	</select>
+
+	<select id="viewResume"
+		resultType="com.prj.recruits.domain.PResumeVo">
+		SELECT *
+		FROM P_RESUME
+		WHERE pno = #{pno}
+	</select>
+
+	<insert id="writeResume">
+		INSERT INTO P_RESUME(
+		PNO,
+		P_TITLE,
+		P_NAME,
+		P_BIRTH,
+		P_PHONE,
+		P_EMAIL,
+		P_ADDRESS,
+		INTRO
+		)
+		VALUES (
+		(SELECT NVL(MAX(PNO), 0) + 1 FROM P_RESUME),
+		#{p_title, jdbcType=VARCHAR},
+		#{p_name, jdbcType=VARCHAR},
+		#{p_birth, jdbcType=VARCHAR},
+		#{p_phone, jdbcType=VARCHAR},
+		#{p_email, jdbcType=VARCHAR},
+		#{p_address, jdbcType=VARCHAR},
+		#{intro, jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<select id="getUpdateResumeByPno"
+		resultType="com.prj.recruits.domain.PResumeVo">
+		SELECT *
+		FROM P_RESUME
+		WHERE pno = #{pno}
+	</select>
+
+	<update id="updateResume">
+		UPDATE P_RESUME
+
+		SET
+		P_TITLE=#{p_title, jdbcType=VARCHAR},
+		P_NAME=#{p_name, jdbcType=VARCHAR},
+		P_BIRTH=#{p_birth, jdbcType=VARCHAR},
+		P_PHONE=#{p_phone, jdbcType=VARCHAR},
+		P_EMAIL=#{p_email, jdbcType=VARCHAR},
+		P_ADDRESS=#{p_address, jdbcType=VARCHAR},
+		INTRO=#{intro}
+
+
+		WHERE PNO=#{pno}
+	</update>
+
+	<delete id="deleteResume">
+		DELETE FROM P_RESUME
+		WHERE PNO=#{pno}
+	</delete>
+
+</mapper>
