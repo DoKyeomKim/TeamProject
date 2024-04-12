@@ -89,7 +89,7 @@
     <%@include file="/WEB-INF/include/header.jsp" %>
 		<form action="" method="POST">
     <h2 class="title">채용공고 상세보기</h2>
-    <br><br>
+    <br><br> 
 
     <table id="viewtb">
       <tr>
