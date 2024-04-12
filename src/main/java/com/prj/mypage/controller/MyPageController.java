@@ -260,8 +260,7 @@ public class MyPageController {
 		}
 		
 		
-		
-		
+
 		
 		//  공고 상세 보기
 		//  /MyPage/CRecruitView?cno=1
@@ -320,6 +319,22 @@ public class MyPageController {
 			return mv;
 			
 		}
+		
+		// 채용공고 스크랩 리스트부분
+		@RequestMapping("/PScrap")
+		public ModelAndView pScrap() {
+		    List<PResumeVo> pResumeList = pResumeMapper.getResumeList();
+		    
+		    ModelAndView mv = new ModelAndView();
+		    mv.addObject("pResumeList", pResumeList);
+		    mv.setViewName("mypage/pmanage");
+		    return mv;
+		}
+		
+		
+		
+		
+		
 		
 		
 }

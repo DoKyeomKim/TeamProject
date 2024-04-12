@@ -87,14 +87,75 @@
 <body>
 
     <%@include file="/WEB-INF/include/header.jsp" %>
-		<form action="" method="POST">
+		<form action="my" method="POST">
     <h2 class="title">채용공고 상세보기</h2>
-    <br><br> 
+    <br><br>
+    <script>
+    function showApplyModal() {
+        fetch("/MyPage/PManage")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('이력서 목록을 불러오는 데 실패했습니다.');
+            }
+            return response.json(); // JSON 파싱
+        })
+        .then(resumes => {
+            var resumeList = document.getElementById('resumeList');
+            resumeList.innerHTML = ''; // 목록 초기화
+            
+            if (resumes.length > 0) {
+                resumes.forEach(function(resume) {
+                    var div = document.createElement('div');
+                    div.innerHTML = '<input type="radio" name="resume" value="' + resume.id + '">' + resume.title;
+                    resumeList.appendChild(div);
+                });
+            } else {
+                resumeList.innerHTML = '등록된 이력서가 없습니다.';
+            }
+            
+            document.getElementById('applyModal').style.display = 'block';
+        })
+        .catch(error => {
+            alert(error.message);
+        });
+    }
+
+    function submitApplication() {
+        var selectedResume = document.querySelector('input[name="resume"]:checked').value;
+        // 선택된 이력서 ID와 함께 지원 정보를 서버로 전송하는 로직 구현
+        alert("이력서 ID " + selectedResume + "로 지원하셨습니다."); // 예시
+        // 이 부분에 실제 서버로 데이터를 전송하는 코드 추가
+        
+        // 예제 코드
+        // fetch("/apply", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         resumeId: selectedResume,
+        //         // 기타 지원에 필요한 데이터
+        //     }),
+        // })
+        // .then(response => {
+        //     if (!response.ok) {
+        //         throw new Error('지원 실패');
+        //     }
+        //     return response.json();
+        // })
+        // .then(data => {
+        //     console.log(data); // 성공 응답 처리
+        // })
+        // .catch(error => {
+        //     console.error('지원 중 에러 발생:', error);
+        // });
+    }
+</script> 
 
     <table id="viewtb">
       <tr>
         <td rowspan="3"  style="border: 1px solid #888;">
-          <img src="img_girl.jpg" alt="사진">
+          <!-- <img src="logo.png" alt="사진"> -->
         </td>
         <td>회사명</td>
         <td>${ cVo.c_company }</td>
@@ -126,7 +187,7 @@
     
     <div class="intro">
       <h3>채용정보</h3>
-      <textarea rows="15" cols="80" maxlength="1000">
+      <textarea rows="15" cols="80" maxlength="1000" readonly>
         접수기간 : 상시모집
         내용 : ${ cVo.c_info }
       </textarea>
@@ -134,6 +195,15 @@
     <br>
     <div class="center">
     <button type="submit">지원하기</button>
+		</div>
+		
+		<!-- 이력서 선택 모달 -->
+		<div id="applyModal" style="display:none;">
+			<h3>이력서 선택</h3>
+			<div id="resumeList">
+			
+			</div>
+			<button type="button" onclick="submitApplication()">제출</button>
 		</div>
 		</form>
     <!-- <div class="update">

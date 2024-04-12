@@ -32,6 +32,7 @@
 <a href="">지원 현황</a><br>
 <a href="/mypage/pscrap">채용공고 스크랩</a><br>
 </aside>
+</form>
 
 <%@include file="/WEB-INF/include/footer.jsp" %>
 </body>

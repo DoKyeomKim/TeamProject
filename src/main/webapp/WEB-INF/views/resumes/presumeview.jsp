@@ -6,7 +6,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <fieldset>
     <title>이력서 작성</title>
      <link rel="stylesheet"  href="/css/header.css" />
     <style>
