@@ -6,10 +6,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.prj.recruits.domain.ApplyVo;
 import com.prj.recruits.domain.CRecruitVo;
+import com.prj.recruits.domain.PResumeVo;
+import com.prj.recruits.mapper.ApplyMapper;
 import com.prj.recruits.mapper.CRecruitMapper;
+import com.prj.recruits.mapper.PResumeMapper;
+import com.prj.users.domain.PUserVo;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -18,8 +27,16 @@ public class RecruitsController {
 	
 	@Autowired
 	private CRecruitMapper cRecruitMapper;
-
-	// 공고 목록 조회 /Recruits/List
+	@Autowired
+	private PResumeMapper pResumeMapper;
+	
+	@Autowired
+	private ApplyMapper applyMapper;
+	
+	//===========채용정보==================
+	
+	// 공고 목록 조회 
+	// /Recruits/List
 	@RequestMapping("/List")
 	public ModelAndView list( CRecruitVo cResumeVo ) {
 	
@@ -33,7 +50,8 @@ public class RecruitsController {
 				
 	}
 	
-	// 공고 자세히 보기 /Recruits/View?cno=${ cno }
+	// 공고 자세히 보기
+	// /Recruits/View?cno=${ cno }
 	@RequestMapping("/View")
 	public ModelAndView view( CRecruitVo cRecruitVo ) {
 		
@@ -47,99 +65,54 @@ public class RecruitsController {
 		
 	}
 	
-	//------------------------------------------------------------------------------------
-	
-	// 공고 관리 페이지
-    @RequestMapping("/CManage")
-    public ModelAndView cManager() {
-       
-       List<CRecruitVo> cRecruitList = cRecruitMapper.getRecruitList(); 
-       
-       ModelAndView mv = new ModelAndView();
-       mv.addObject("cRecruitList", cRecruitList);
-       mv.setViewName("mypage/cmanage");
-       
-       return mv;
-    }
-    
-    //  공고 작성 폼
-    @RequestMapping("/WriteForm")
-    public  ModelAndView CRecruitWriteForm() {
-       
-       ModelAndView  mv = new ModelAndView();      
-       mv.setViewName("mypage/crecruitwrite");
-       return  mv;
-    }
-    
-    //  공고 작성
-    @RequestMapping("/CRecruitWrite")
-    public  ModelAndView  write(CRecruitVo  cRecruitVo) {      
-       
-       ModelAndView   mv   =  new  ModelAndView();
-       cRecruitMapper.writeRecruit(cRecruitVo);
-       
-       mv.setViewName("redirect:/Mypage/CManage"); 
-       return   mv;
-    }
-    
-    //  공고 상세 보기
-    //  /MyPage/CRecruitView?cno=1
-    @RequestMapping("/CRecruitView")
-    public  ModelAndView CRecruitView(CRecruitVo cRecruitVo) {
-       
-       int cno         = cRecruitVo.getCno();
-       CRecruitVo crv = cRecruitMapper.viewRecruit(cno); 
-       
-       //CResumeVo cresumeVo = usersMapper.getCResumeByCno();
-             
-       ModelAndView mv = new ModelAndView();
-       mv.addObject("crv", crv);
-       mv.setViewName("mypage/crecruitview");
-       return  mv;      
-    }
-    
-    //  공고 수정 폼
-    @RequestMapping("/CRecruitUpdateForm")
-       public ModelAndView  cRecruitUpdateForm(CRecruitVo cRecruitVo) {
-       
-       int cno = cRecruitVo.getCno();
-       CRecruitVo crv = cRecruitMapper.getUpdateRecruitByCno(cno);
-       
-       ModelAndView mv = new ModelAndView();
-       
-       mv.addObject("crv", crv);
-       mv.setViewName("mypage/crecruitupdate");
-       return mv;
-    }
-    
-    //  공고 수정
-    @RequestMapping("/CRecruitUpdate")
-    public ModelAndView cRecruitUpdate(CRecruitVo cRecruitVo) {
-       
-       int cno = cRecruitVo.getCno();
-       cRecruitMapper.updateRecruit(cRecruitVo);
-       
-       ModelAndView mv = new ModelAndView();
-       mv.setViewName("redirect:/Mypage/CRecruitView?cno=" + cno);
-       return mv;
-       
-    }
-    
-    // 공고 삭제
-    @RequestMapping("/CRecruitDelete")
-    public ModelAndView cRecruitDelete(CRecruitVo cRecruitVo) {
-       
-       int cno = cRecruitVo.getCno();
-       cRecruitMapper.deleteRecruit(cno);
-       
-       ModelAndView mv = new ModelAndView();
-       mv.addObject("crv", cRecruitVo );
-       mv.setViewName("redirect:/MyPage/CManage");
-       
-       return mv;
-       
-    }
+	// 지원하기 리스트
+	@RequestMapping("/GoApply")
+	public ModelAndView GoApply(HttpServletRequest request, CRecruitVo cRecruitVo,@RequestParam("selectedCno") int cno) {
 		
+
+		HttpSession session = request.getSession();
+		PUserVo sessionPUser = (PUserVo) session.getAttribute("pLogin");
+	    if(sessionPUser == null) {
+	        return new ModelAndView("redirect:/Users/PLoginForm");
+	    }
+		
+		List<PResumeVo> pResumeList = applyMapper.getApplyResumeList(sessionPUser.getP_id());
+	    
+				
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("pResumeList", pResumeList);
+		mv.addObject("selectedCno",cno);
+		mv.setViewName("apply/resumelist");
+		
+		//System.out.println("================================="+cno);
+		
+		return mv;
+	}
+	
+	//지원하기
+	@RequestMapping("/ApplyAction")
+	public ModelAndView applyAction(HttpServletRequest request, 
+	                                @RequestParam("selectedResume") int pno,
+	                                @RequestParam("cno") int cno) {
+
+	    HttpSession session = request.getSession();
+	    PUserVo sessionPUser = (PUserVo) session.getAttribute("pLogin");
+	    if(sessionPUser == null) {
+	        return new ModelAndView("redirect:/Users/PLoginForm");
+	    }
+
+	    ApplyVo applyVo = new ApplyVo();
+	    applyVo.setPno(pno);
+	    applyVo.setCno(cno);
+	    applyVo.setP_id(sessionPUser.getP_id());
+	    
+	    applyMapper.applyJob(applyVo); 
+	    
+	    ModelAndView mv = new ModelAndView();
+	    mv.setViewName("redirect:/Recruits/View?cno="+cno);
+	    
+	    return mv;
+	}
 }
 	
 	

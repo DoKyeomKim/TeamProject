@@ -102,7 +102,8 @@
   
     UPDATE  FREEBOARD
        SET  TITLE = #{ title },
-       		CONTENT = #{ content }
+       		CONTENT = #{ content },
+       		NAME = #{name}
      WHERE  FNO = #{ fno }
   
   </update>
@@ -112,6 +113,7 @@
     UPDATE  REVIEWBOARD
        SET  TITLE = #{ title },
             STAR = #{ star },
+            NAME = #{name},
             CONTENT = #{ content }
      WHERE  RNO = #{ rno }
   

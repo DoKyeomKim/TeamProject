@@ -18,4 +18,5 @@ public class CRecruitVo {
 	private String c_info;
 	private String c_ddate;
 	private String bookmark;
+	private String imagePath;
 }

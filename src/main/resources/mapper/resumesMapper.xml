@@ -14,6 +14,7 @@
     <result  property="skill"     column="skill" />
     <result  property="intro"     column="intro" />
     <result  property="bookmark"     column="bookmark" />
+    <result property="imagePath" column="IMAGEPATH"/>
   </resultMap>
 
 <select id="getPResumeList">
@@ -21,7 +22,8 @@
 	 PNO,
 	 P_ID,
 	 P_NAME,
-	 P_TITLE
+	 P_TITLE,
+	 skill
 	FROM P_RESUME
 	
 </select>
@@ -38,7 +40,8 @@
         P_ADDRESS,
         SKILL,
         INTRO,
-        BOOKMARK
+        BOOKMARK,
+        IMAGEPATH
     FROM P_RESUME
     WHERE PNO = #{pno}
 </select>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.reviewboard.mapper.BoardPagingMapper">
+
+
+
+  <select id="rcount" 
+        parameterType="com.prj.reviewboard.domain.ReviewPagingVo" 
+        resultType="int">
+		SELECT COUNT(*) AS CNT
+		  FROM REVIEWBOARD
+		  <where>
+		  <if test="comu_id != null and comu_id != ''">
+			 AND comu_id = #{ comu_id }
+		  </if>
+		  <if test="rno != null and rno != ''">
+			 AND RNO = #{ rno }
+		  </if>
+		  <if test="name != null and name != ''">
+			 AND NAME LIKE '%' || #{name} || '%'
+		  </if>
+		  <if test="star != null and star != ''">
+			 AND STAR = #{ star }
+		  </if>
+		  </where>
+  </select>
+	
+
+  <select   id="getReviewPagingList" 
+              resultType="com.prj.reviewboard.domain.ReviewPagingVo" >
+    	SELECT  
+    	    RNO
+    	  , NAME
+    	  , STAR
+    	  , COMU_ID 
+    	  , TITLE    	  
+    	  , CONTENT
+    	 FROM  
+           REVIEWBOARD
+         <where>
+          <if test="arg0 != null and arg0 != ''">
+			 AND RNO = #{ arg0 }
+		  </if>
+          <if test="arg1 != null and arg1 != ''">
+			 AND NAME LIKE '%' || #{ arg1 } || '%'
+		  </if>
+		  <if test="arg2 != null and arg2 != ''">
+			 AND STAR = #{ arg2 }
+		  </if>		 
+		  </where>
+         ORDER BY  RNO DESC 
+	    OFFSET #{ arg3 } ROWS FETCH NEXT #{ arg4 } ROWS ONLY 
+         
+    </select>
+	
+	
+	<insert id="insertReview">
+	
+	  INSERT  INTO  REVIEWBOARD
+	  VALUES  (
+	  	'COMU01', 
+	  	(SELECT NVL(MAX(RNO), 0) + 1 FROM REVIEWBOARD),
+    	#{ name },
+    	#{ title },
+    	#{ content },
+    	#{ star }
+	  )
+	  	
+	</insert>
+	
+	
+	<select id="getReview">
+  
+    SELECT  COMU_ID,
+			RNO,
+			NAME,
+			TITLE,
+			CONTENT,
+			STAR
+	  FROM  REVIEWBOARD
+	 WHERE  RNO = #{ rno } 
+  
+  </select>
+  
+  
+  <update id="updateReview">
+  
+    UPDATE  REVIEWBOARD
+       SET  TITLE = #{ title },
+            STAR = #{ star },
+            CONTENT = #{ content },
+            NAME = #{ name }
+     WHERE  RNO = #{ rno }
+  
+  </update>
+  
+  
+  <delete id="deleteReview">
+  
+    DELETE  FROM  REVIEWBOARD
+     WHERE  RNO = #{ rno }
+  
+  </delete>
+  
+  
+  <select id="fcount" 
+        parameterType="com.prj.reviewboard.domain.FreePagingVo" 
+        resultType="int">
+		SELECT COUNT(*) AS CNT
+		  FROM FREEBOARD
+		  <where>
+		  <if test="comu_id != null and comu_id != ''">
+			 AND COMU_ID = #{ comu_id }
+		  </if>
+		  <if test="title != null and title != ''">
+			 AND TITLE LIKE '%' || #{title} || '%'
+		  </if>
+		  <if test="name != null and name != ''">
+			 AND NAME LIKE '%' || #{name} || '%'
+		  </if>
+		  </where>
+  </select>
+  
+  
+  <select   id="getFreePagingList" 
+              resultType="com.prj.reviewboard.domain.FreePagingVo" >
+    	SELECT  
+    	    FNO
+    	  , COMU_ID
+    	  , NAME
+    	  , TITLE  
+    	  , CONTENT
+    	 FROM  
+           FREEBOARD
+         <where>
+          <if test="arg0 != null and arg0 != ''">
+			 AND COMU_ID = #{ arg0 }
+		  </if>
+          <if test="arg1 != null and arg1 != ''">
+			 AND TITLE LIKE '%' || #{ arg1 } || '%'
+		  </if>
+		  <if test="arg2 != null and arg2 != ''">
+			 AND NAME LIKE '%' || #{ arg2 } || '%'
+		  </if>		 
+		  </where>
+         ORDER BY  FNO DESC 
+	    OFFSET #{ arg3 } ROWS FETCH NEXT #{ arg4 } ROWS ONLY 
+         
+  </select>
+    
+ 
+  
+  <insert id="insertFree">
+	
+	  INSERT  INTO  FREEBOARD
+	  VALUES  ( 
+    	'COMU02',
+	  (SELECT NVL(MAX(FNO), 0) + 1 FROM FREEBOARD),
+    	#{ name },
+    	#{ title },
+    	#{ content }
+	  )
+	  	
+  </insert>
+  
+  
+  <select id="getFree">
+  
+    SELECT  COMU_ID,
+			FNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	FREEBOARD
+	 WHERE  FNO = #{ fno }
+  
+  </select>
+  
+  
+  <update id="updateFree">
+  
+    UPDATE  FREEBOARD
+       SET  TITLE = #{ title },
+       		CONTENT = #{ content },
+       		NAME = #{ name }
+     WHERE  FNO = #{ fno }
+  
+  </update>
+  
+  
+  <delete id="deleteFree">
+  
+    DELETE  FROM  FREEBOARD
+     WHERE  FNO = #{ fno }
+  
+  </delete>
+  
+  
+  <select id="getServiceList">
+  
+    SELECT  SNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	SERVICEBOARD
+  
+  </select>
+  
+  
+  <select id="getServiceView">
+  
+      SELECT 	SNO,
+				NAME,
+				TITLE,
+				CONTENT
+	    FROM	SERVICEBOARD
+	   WHERE	SNO = #{ sno } 
+  
+  </select>
+  
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

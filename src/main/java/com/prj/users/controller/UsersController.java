@@ -68,7 +68,7 @@ public class UsersController {
 			loc = "redirect:/";
 		}
 		else {
-		loc = "redirect:/PLoginForm";	
+		loc = "redirect:/Users/PLoginForm";	
 		}
 		
 		ModelAndView mv = new ModelAndView();
@@ -133,10 +133,11 @@ public class UsersController {
 	public ModelAndView logout(HttpServletRequest request) {
 	    HttpSession session = request.getSession();
 	    
-	    //세션 없애버린다는 소리
+	    // 세션 무효화
 	    session.invalidate();
-	    ModelAndView mv = new ModelAndView();
-	    mv.setViewName("/home");
+	    
+	    // 홈 페이지로 리다이렉트
+	    ModelAndView mv = new ModelAndView("redirect:/");
 	    
 	    return mv;
 	}
@@ -189,25 +190,7 @@ public class UsersController {
 		return mv;
 	}
 	
-	//-------------이거 왜 만들었는지 만든 나도 모르겠음
 
-
-	
-	@RequestMapping("/View")
-	public ModelAndView view(PUserVo pUserVo) {
-		
-		//PUserVo puv = usersMapper.viewPUser(pUserVo);
-		ModelAndView mv = new ModelAndView();
-		
-		//mv.addObject("vo",puv);
-		mv.setViewName("users/view");
-		
-		return mv;
-
-		
-	}
-	// ---------------------------
-	
 	
 
 		

@@ -1,91 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
 
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet"  href="/css/header.css" />
-	
-	<style>
-	#rmain table {
-		border: 1px solid black;
-		width: 70%;
-		margin: 50px 50px;
-	    padding: 10px 50px;  
-	}
-	#rmain table tr { 
-		border: 1px solid black;
-	    text-align  : center; 
-	}
-	#rmain table tr  td { 
-		border: 1px solid black;
-	    padding     : 10px;  
-	    text-align  : center; 
-	}
-	td:nth-of-type(1) { width : 100px; }
-	td:nth-of-type(2) { width : 200px; }
-	td:nth-of-type(3) { width : 100px; }
-	td:nth-of-type(4) { width : 200px; }
-	
-	textarea  {
-      height: 250px;
-      width : 100%;
-    }
-    
-	</style>	
-	
-  </head>
-
-  <body>
-   <main id="rmain">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 작성</title>
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <!-- 부트스트랩 CSS 링크 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
   	<%@include file="/WEB-INF/include/header.jsp" %>
+  	
+<div class="container mt-5">
+    <h1 class="text-center">자유게시판 글쓰기</h1>
     
-    <br>
-    <h2>자유게시판 글 등록</h2>
-    <form action="/Review/WriteFree" method="POST">
-    <input type="hidden" name="comu_id" value="${ comu_id }">
-    <table>
-      <tr>
-        <td>이름</td>
-        <td colspan="3"><input type="text" name="name"></td>
-      </tr>
-      <tr>
-        <td>제목</td>
-        <td colspan="3"><input type="text" name="title"></td>
-      </tr>
-      <tr>
-        <td>내용</td>
-        <td colspan="3"><textarea name="content"></textarea></td>
-      </tr>
-      
-    <tr>
-      <td colspan="4">
-    	<input type="submit" value="완료" id="goList">
-      </td>
-    </tr>
-    
-    </table>
-    </form>
-    
-    <%@include file="/WEB-INF/include/footer.jsp" %>
-      
-   </main>
-   
-   <script>
-   
-	  	const  goListEl  = document.getElementById('goList');
-	  	goListEl.addEventListener('click', function(e) {
-	  		location.href = '/Review/ListFree?comu_id=COMU02';
-	  	})
-  
-  </script>
-  
-   
-  </body>
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <form action="/BoardPaging/WriteFree" method="post">
+             <input type="hidden" name="comu_id" value="${ comu_id }">
+             <input type="hidden" name="nowpage" value="${ nowpage }">
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">작성자</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea class="form-control" id="content" name="content" rows="15" wrap="soft" style="resize: none;"required></textarea>
+                </div>
+                
+                <div style="text-align:center;">
+                <button type="submit" class="btn btn-primary">글 작성</button>
+                <a href="/BoardPaging/FreeList?comu_id=COMU02&nowpage=${ nowpage }" class="btn btn-primary">목록으로</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-  </html>
+    <%@include file="/WEB-INF/include/footer.jsp" %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>

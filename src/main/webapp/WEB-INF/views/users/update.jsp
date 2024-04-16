@@ -11,26 +11,26 @@
 
 </style>
 <body>
-	<h1 style="text-align: center; padding-top: 100px;">개인 회원가입</h1>
+	<h1 style="text-align: center; padding-top: 100px;">개인 회원정보 수정</h1>
 	<form action="" method="post" class="cjoinForm">
 	<div style="border: 1px solid skyblue;">
     <div>
-    <input type="text"     name="p_id"     placeholder="아이디"      class="pjoinFormid">
+    <input type="text"     name="p_id"     placeholder="아이디"      class="pjoinFormid"     value="${vo.p_id}" readonly />
     </div>
     <div>
-    <input type="password" name="p_passwd" placeholder="비밀번호"     class="pjoinFormpw">
+    <input type="password" name="p_passwd" placeholder="비밀번호"     class="pjoinFormpw"    value="${vo.p_passwd}"/>
     </div>
     <div>
-    <input type="password" name="p_passwd" placeholder="비밀번호확인" class="pjoinFormpw">
+    <input type="password" name="p_passwd" placeholder="비밀번호확인" class="pjoinFormpw"    value="${vo.p_passwd}"/>
     </div>
     <div>
-    <input type="text"     name="p_name"   placeholder="이름"         class="pjoinFormname">
+    <input type="text"     name="p_name"   placeholder="이름"         class="pjoinFormname"  value="${vo.p_name}" readonly />
     </div>
     <div>
-    <input type="number"   name="p_phone"  placeholder="전화번호"     class="pjoinFormphone">
+    <input type="text"   name="p_phone"  placeholder="전화번호"     class="pjoinFormphone" value="${vo.p_phone}"/>
     </div>
     <div>
-    <input type="email"    name="p_email"  placeholder="이메일"       class="pjoinFormemail">
+    <input type="email"    name="p_email"  placeholder="이메일"       class="pjoinFormemail" value="${vo.p_email}"/>
     </div>
     
     <hr class="my-4">
@@ -90,7 +90,7 @@
                 <hr class="my-4">
        </div>
        <div>
-       <button class="w-100 btn btn-lg" onclick="saveResume()" style="background-color: #7CC98A;color: #fff; font-weight: 200px;" type="button">회원가입</button>
+       <a href="/MyPage/PUpdate">수정완료</a>
        </div>
               
 </body>

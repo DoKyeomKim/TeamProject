@@ -1,131 +1,139 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이력서 작성</title>
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <head>
-      <meta charset="UTF-8">
-      <title>Insert title here</title>
-	       <link rel="stylesheet"  href="/css/header.css" />
-	  
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-      <!-- ===========이력서 등록=============== -->
+<style>
+aside {
+	float: left;
+	margin-right: 2%;
+	text-align: center;
+	padding-left: 3%;
+	padding-top: 5%;
+	}
+	
 
-      <head>
-        <style>
-          .title {
-            text-align: center;
-            font-weight: bold;
-          }
 
-          .center {
-            text-align: center;
-          }
+</style>
+</head>
 
-          .center button {
-            margin: 0 10px;
-          }
+<body>
+<%@include file="/WEB-INF/include/header.jsp" %>	
 
-          .intro {
-            text-align: center;
-          }
+		<aside>
+			<nav>
+				<div class="list-group">
+	  	<a href="/MyPage/PUpdateForm?p_id=${sessionScope.p_id}" class="list-group-item list-group-item-action">정보수정</a>
+	  	<a href="/MyPage/PManage" class="list-group-item list-group-item-action">이력서 관리</a>
+	  	<a href="/MyPage/PNow" class="list-group-item list-group-item-action">지원 현황</a>
+	  	<a href="#" class="list-group-item list-group-item-action">채용공고 스크랩</a>
+				</div>
+			</nav>
+		</aside>
+		
+		
+		<main  style="display: grid;">
+		   <hr>
+		
+           <div class=" mx-2 pb-4 w-100">
+           
+                <form action="/MyPage/PResumeWrite" method="post" enctype="multipart/form-data">
+                    <div class="border border-tertiary w-70 p-5 rounded">
 
-          table {
-            margin: 0 auto;
-          }
+                        <h1 style="text-align: center; margin : 0 auto;">
+                        <input type="text" placeholder="이력서 제목을 입력하세요" style="width: 700px; text-align: center;" class="p_title" name="p_title" required></h1>
 
-          input[type="text"] {
-            width: 80%;
-          }
 
-          .upload-container {
-            display: flex;
-            align-items: center;
-          }
-
-          .upload-container img {
-            width: 100px;
-            height: 100px;
-            margin-right: 20px;
-          }
-
-          .skill {
-            text-align: center;
-            font-weight: bold;
-          }
-
-          .intro {
-            font-weight: bold;
-          }
-        </style>
-      </head>
-
-    <body>
-    	<%@include file="/WEB-INF/include/header.jsp"%>
-    	<!-- /MyPage/PResumeWrite -->
-      <h2 class="title">이력서 작성</h2>
-       <form action="/MyPage/PResumeWrite" method="post">      
-      <div class="center">
-        <input type="text" style="text-align: center;" name="p_title" placeholder="나를 소개하는 한마디를 적어주세요">
-      </div>
-      <br><br>
-
-      <table>
-        <tr>
-          <td class="upload-container">
-            <img src="img_girl.jpg" alt="사진">
-          </td>
-          <td>이름</td>
-          <td><input type="text" name="p_name" placeholder="한글이름" ></td>
-        </tr>
-        <tr>
-          <td class="upload-container">
-            <input type="file">
-          </td>
-          <td>생년월일</td>
-          <td><input type="text" name="p_birth" ></td>
-          <td>연락처</td>
-          <td><input type="text" name="p_phone" placeholder="010-0000-0000" style="width: 100%"></td>
-        </tr>
-        <tr>
-          <td class="upload-container">
-          </td>
-          <td>이메일</td>
-          <td colspan="4"><input type="text" name="p_email" placeholder="@를 포함한 주소 입력" style="width: 100%;"></td>
-        </tr>
-        <tr>
-          <td>주소</td>
-          <td colspan="5"><input type="text" name="p_address" placeholder="거주하는 동까지 입력" style="width: 100%;"> </td>
-        </tr>
-      </table>
-      <br>
-
-      <h5 class="skill">보유 기술(선택)</h5>
-
-        <input type="checkbox" name="skill" value="Java" /> Java
-        <input type="checkbox" name="skill" value="Java" /> HTML
-        <input type="checkbox" name="skill" value="Java" /> Oracle
-        <input type="checkbox" name="skill" value="Java" /> MySql
-        <input type="checkbox" name="skill" value="Java" /> CSS
-        <input type="checkbox" name="skill" value="Java" /> JavaScript
-        <input type="checkbox" name="skill" value="Java" /> Vscode
-        <input type="checkbox" name="skill" value="Java" /> SpringBoot
-
-        <hr class="my-4">
-        <br><br>
-
-        <div class="intro">
-          <h5>자기소개</h5>
-          <textarea rows="15" cols="100" name="intro" maxlength="1000" placeholder="1000자 이내로 작성"></textarea>
+<div class="container" style="width: 85%;">
+    <div class="row">
+        <!-- 왼쪽에 이미지 -->
+        <div class="col-md-4 mt-5">
+            <img src="#" id="imagePreview"
+                style="width:250px; height: 250px;" class="mb-2 border border-tertiary">
         </div>
-        <br>
 
-        <div class="center">
-          <button>작성완료</button>
-          <a href="/MyPage/PManage">작성취소</a>
+        <!-- 오른쪽에 입력 필드 -->
+        <div class="col-md-8 mt-5">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25 justify-content-center" style="background-color: #EDF9FF;">이름</span>
+                <input type="text" class="form-control" name="p_name" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25 justify-content-center" style="background-color: #EDF9FF;">생년월일</span>
+                <input type="text" class="form-control" name="p_birth" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25 justify-content-center" style="background-color: #EDF9FF;">연락처</span>
+                <input type="text" class="form-control" name="p_phone" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25 justify-content-center" style="background-color: #EDF9FF;">주소</span>
+                <input type="text" class="form-control" name="p_address" required>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25 justify-content-center" style="background-color: #EDF9FF;">이메일</span>
+                <input type="text" class="form-control" name="p_email" required>
+            </div>
         </div>
-        </form>
-    <%@include file="/WEB-INF/include/footer.jsp" %>
-    </body>
+    </div>
+</div>
+
+
+
+
+
+                 <div class="container" style="width: 85%;">
+                     <div class="row justify-content-center ">
+                         <div class="col-md-14 mx-auto">
+                             <input type="file" id="uploadInput" name="file" class="form-control mt-2" onchange="previewImage()" required/>
+                         </div>
+                         
+                         
+                         
+                         
+                         <br>
+
+                         <div  style="margin-top:15px;">
+                                 <h4>자기소개</h4>
+                                 <textarea name="intro" class="w-100" rows="10"
+                                     placeholder="내용을 입력하세요" required></textarea>
+                             </div>
+                             <div class="d-flex mt-4 justify-content-center">
+                                 <div class="px-2">
+                                     <button type="submit" class="btn btn-primary">저장</button>   <a href="/MyPage/PManage" class="btn btn-primary">목록으로</a>
+                                 </div>
+                             </div>
+                         </div>
+
+                     </div>
+             </form>
+         </div>
+</main>
+<script>
+function previewImage() {
+    const fileInput = document.getElementById('uploadInput');
+    const imagePreview = document.getElementById('imagePreview');
+    
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(fileInput.files[0]); // 파일을 읽어 데이터 URL로 변환
+    }
+}
+</script>
+        
+ <%@include file="/WEB-INF/include/footer.jsp"%>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ 
+</body>

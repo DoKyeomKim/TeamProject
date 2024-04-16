@@ -4,150 +4,90 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"  href="/css/header.css" />
+<title>Pinacle</title>
+<link rel="icon" type="image/png" href="/img/favicon.png" />
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <style>
+    
+ main{
+ padding : 3% 5%;
+ margin : 5% 5%;
+ }
      
-        body {
-            margin: 0;
-            padding: 0;
-        }
-          /* Header부분 */    
+.cResume {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    max-width: 300px;
+    height: auto;
+    transition: all 0.3s ease;
+}
 
-         
+.cResume:hover {
+    transform: scale(1.05); /* 호버 효과 시 크기 확대 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+}
 
-      
-      /*퀵서치*/
-      .quickSearch {
-          display: flex;
-          justify-content: center;
-          margin: 20px;
-         margin-top : 100px;
-          
-      }
-      
-      .quickSearch form {
-           display: flex;
-      }
-      
+.cResume img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 10px;
+}
 
-      
-      .quickSearch select {
-          margin-right: 30px; 
-          padding: 15px;      
-          width: 150px;      
-      }
-      
-      
-      .quickSearchBtn{
-          padding: 10px 15px;
-         
-          }
-          
-      /* main 부분*/    
-      main {
-           display: grid;
-           grid-template-columns: repeat(3, 1fr);
-           gap: 10px;
-         padding: 200px 500px;
-       }
-   
-       .cResume {
-           border: 1px solid #ccc;
-           margin : 10px;
-           padding: 25px 15px;
-           text-align: center;
-
-       }
-   
-       .cResume img {
-           max-width: 100%;
-           height: auto;
-           margin-bottom: 50px;
-       }
-   
-       .cResume .cName, .cResume .title {
-           font-size: 16px;
-           margin-bottom: 5px;
-       }
+.cResume .cName, .cResume .title {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
              
     </style>
 
 </head>
 <body>
 
-	 <%@include file="/WEB-INF/include/header.jsp" %>
+    <%@include file="/WEB-INF/include/header.jsp" %>
 
-
-      <div class="quickSearch">
-         <form action="/#" method="get">
-            <select>
-               <option>지역</option>
-               <option>서울</option>
-               <option>부산</option>
-               <option>울산</option>
-            </select>
-
-            <!--c: foreach 할듯 -->
-            <select>
-               <option>기술스택</option>
-               <option>java</option>
-               <option>html</option>
-               <option>css</option>
-            </select> 
-            <select>
-               <option>경1력</option>
-               <option>신입</option>
-               <option>1~3년</option>
-               <option>3~5년</option>
-            </select>
-            
-            <button type="submit" class="quickSearchBtn">검색</button>
-         </form>
-      </div>
-
-
-      
+     
       <main>
                  
           <!--c: foreach 할듯 -->
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
-          <div class="cResume">
-              <a href=""><img src="" alt="이미지1"></a>
-              <div class="cName"><a href="">회사명1</a></div>
-              <div class="title"><a href="">제목1</a></div>
-          </div>
+<div class="container text-center">
+    <c:forEach var="recruit" items="${recruitList}" varStatus="status">
+        <c:if test="${status.index % 3 == 0}">
+            <div class="row">
+        </c:if>
+
+        <div class="col">
+            <div class="cResume">
+                <input type="hidden" name="cno" value="${recruit.cno}">
+                <a href="/Recruits/View?cno=${recruit.cno}">
+                    <img src="${recruit.imagePath}" alt="이미지1">
+                </a>
+                <div class="cName">
+                    <a href="/Recruits/View?cno=${recruit.cno}">
+                        ${recruit.c_company}
+                    </a>
+                </div>
+                <div class="title">
+                    <a href="/Recruits/View?cno=${recruit.cno}">
+                        ${recruit.c_title}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <c:if test="${status.index % 3 == 2 or status.last}">
+            </div>
+        </c:if>
+    </c:forEach>
+</div>
    
       </main>
 
-	 <%@include file="/WEB-INF/include/footer.jsp" %>
+    <%@include file="/WEB-INF/include/footer.jsp" %>
 
 
 </body>

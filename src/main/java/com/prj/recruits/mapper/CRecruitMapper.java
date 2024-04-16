@@ -16,9 +16,9 @@ public interface CRecruitMapper {
 	
 	//--------------------------------------------------------
 	
-	List<CRecruitVo> getRecruitList(CRecruitVo cResumeVo);
+	//List<CRecruitVo> getRecruitList(CRecruitVo cResumeVo);
 
-	List<CRecruitVo> getRecruitList();
+	//List<CRecruitVo> getRecruitList();
 
 	void writeRecruit(CRecruitVo cRecruitVo);
 
@@ -29,6 +29,11 @@ public interface CRecruitMapper {
 	void updateRecruit(CRecruitVo cRecruitVo);
 
 	void deleteRecruit(int cno);
+
+	List<CRecruitVo> getRecruitList(String c_id);
+
+	// 홈화면 리스트
+	List<CRecruitVo> getRListAtHome(CRecruitVo cRecruitVo);
 
 
 

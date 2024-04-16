@@ -1,157 +1,131 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"  href="/css/header.css" />
+<title>기업 마이페이지</title>
+<link rel="icon" type="image/png" href="/img/favicon.png" />
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <style>
+aside {
+	float: left;
+	margin-right: 2%;
+	text-align: center;
+	padding-left: 3%;
+	padding-top: 5%;
+}
 
-	main {
+h2 {
+	padding-top: 2%;
+	text-align: center;
+}
+
+.list-group a:hover {
+	background-color: #EDF9FF;
+}
+
+.info-box {
+	margin-top: 2%;
+	border-radius: 10px;
+	padding: 2%;
+	border: 1px solid #0e0e0e;
+	width: 1300px;
+	max-width: none !important;
+	text-align: center;
+}
+
+	.name-label {
 	  display: inline-block;
-	  margin-bottom: 50px;
-	}
-	aside {
-	  width: 10%;
-	  line-height: 1.6;	  
-	  border-left: 4px solid maroon;
-	  float: left;
-	  margin-right: 10px;
-	  text-align: center;
-	  padding-top: 5%;
-	}
-	article {
-	  width: 1000px;
-	  line-height: 1.6;	  
-	  text-align: center;
+	  width: 165px; /* 이름 박스 길이 */
+	  padding: 1rem;
+	  border-radius: 10px;
+	  border: 1px solid #ccc;
+	  background-color: #EDF9FF; /* 박스 배경색 */
+	  
 	}
 	
-	#profile1 {
-	  border: 1px solid #666;
-	  margin-right: 10px;
+	.name-value {
+	  display: inline-block;
+	  width: calc(100% - 40%); /* 값 박스 길이 */
+	  border-radius: 10px;
+	  border: 1px solid #ccc;
+	  height: 3.5rem; /* name-label의 높이에 맞추기 위한 값 */
+      line-height: 3.5rem; /* 수직 가운데 정렬 */
 	}
-	
-	#profile1 tr:nth-of-type(1) td:nth-of-type(1){
-	  border: 1px solid black;
-	  padding: 30px;
-	  height: 130px;
-	}
-	
-	#profile3 {
-	  border: 1px solid #666;
-	}
-	
-	#profile3 td {
-	  border: 1px solid black;
-	  border-collapse: collapse;
-	  padding: 10px;
-	}
-	
-	#profile3 tr td:nth-of-type(2) {
-	  width: 200px;
-	}
-	
-	#span {
-	  width: 70%;
-	  border: 1px solid #666;
-	  font-size: 20px;
-	}
+
 
 </style>
+
 
 </head>
 
 <body>
 
-	<%@include file="/WEB-INF/include/header.jsp" %>
-	
+	<%@include file="/WEB-INF/include/header.jsp"%>
+
+
+
 	<main style="display: flex;">
-	
-	<aside>
-	  <nav>
-		<a href="/MyPage/CUpdateForm?c_id=${ vo.c_id }">정보 수정</a><br />
-		<a href="/MyPage/CManage">공고 관리</a><br />
-		<a href="/MyPage/CNow">지원 현황</a><br />
-		<a href="/MyPage/CScrap">인재 스크랩</a>
-	  </nav>	
-	</aside>
-	
-	<section>
-	<article>
-	<h2>내 정보보기</h2>
-	<hr />
-	
-		<div style="display: flex;">
-		<table id="profile1">
-			<tr>
-				<td>사진변경</td>
-			</tr>
-			<tr>	
-				<td><input type="file" name="photo" value="upload"></td>
-			</tr>
-		</table>
-		
-		<%-- <table id="profile2">
-			<tr>
-			  <td>
-			  <input type="text" name="ptitle"  value="${p_title}" placeholder="나를 소개하는 한마디"><br />
-			  <input type="text" name="skill"  value="${skill}" placeholder="보유기술">
-			  </td>
-			</tr>
-		</table> --%>
-		
-		<table id="profile3">
-			<tr>
-				<td>아이디</td>
-				<td>${ vo.c_id }</td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td>${ vo.c_name }</td>
-			</tr>
-			<tr>
-				<td>연락처</td>
-				<td>${ vo.c_phone }</td>
-			</tr>
-			<tr>
-				<td>회사명</td>
-				<td>${ vo.c_company }</td>
-			</tr>
-			<tr>
-				<td>사업자등록번호</td>
-				<td>${ vo.c_bcode }</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${ vo.c_email }</td>
-			</tr>
-		</table>
-		</div>
-		
-		<br /><br />
-		
-		<div id="span">
-			<span>현황</span>&nbsp;&nbsp;&nbsp;&nbsp;
-			<span>지원: 00</span>&nbsp;&nbsp;&nbsp;&nbsp;
-			<span>인재 스크랩: 00</span>
-		</div>
-		<!-- <table id="profile4">
-			<tr>
-				<td>현황</td>
-				<td>지원자 수</td>
-				<td>인재 스크랩</td>
-			</tr>
-		</table> -->
-	</article>
-	</section>	
+
+
+		<aside>
+			<nav>
+				<div class="list-group">
+<a href="/MyPage/CUpdateForm?c_id=${ vo.c_id }" class="list-group-item list-group-item-action">정보수정</a> 
+				<a href="/MyPage/CManage" class="list-group-item list-group-item-action">공고 관리</a> 
+				<a href="#" class="list-group-item list-group-item-action">지원자 현황</a> 
+				<a href="#" class="list-group-item list-group-item-action">인재정보 스크랩</a>
+				</div>
+			</nav>
+		</aside>
+
+		<section>
+			<article>
+				<h2>회원님의 기업 정보입니다.</h2>
+				<hr />
+
+
+
+            <div class="info-box">
+                <div class="form-group">
+                    <span class="name-label">아이디</span>
+                    <span class="name-value">${ vo.c_id }</span>
+                </div>
+                <div class="form-group">
+                    <span class="name-label">회사명</span>
+                    <span class="name-value">${ vo.c_company }</span>
+                </div>
+                <div class="form-group">
+                    <span class="name-label">담당자</span>
+                    <span class="name-value">${ vo.c_name }</span>
+                </div>
+                <div class="form-group">
+                    <span class="name-label">연락처</span>
+                    <span class="name-value">${ vo.c_phone }</span>
+                </div>
+                <div class="form-group">
+                    <span class="name-label">이메일</span>
+                    <span class="name-value">${ vo.c_email }</span>
+                </div>
+                <div class="form-group">
+                    <span class="name-label">사업자 등록번호</span>
+                    <span class="name-value">${ vo.c_bcode }</span>
+                </div>
+
+            </div>
+
+
+
+			</article>
+		</section>
 
 	</main>
 
-    <%@include file="/WEB-INF/include/footer.jsp" %>
-    
+	<%@include file="/WEB-INF/include/footer.jsp"%>
+
+
 </body>
 </html>

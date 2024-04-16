@@ -19,4 +19,7 @@ public class PResumeVo {
 	private String intro;
 	private String bookmark;
 	private int pno;
+	
+	private String imagePath;
+
 }
