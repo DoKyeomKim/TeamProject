@@ -53,11 +53,13 @@
   <li>아이디 중복체크/저장</li>
   <li>지역,경력,기술스택 매칭/퀵메뉴 구현</li>
 </ul>
+<br>
+<br>
+
+<h2>ER Diagram 설계</h2>
 
 
-<h2>ERD 설계</h2>
-
-![ERD](https://github.com/DoKyeomKim/TeamProject/assets/163399297/29b3863e-fe25-4fc7-9100-17f89c28a906)
+![2](https://github.com/DoKyeomKim/TeamProject/assets/163399297/f4833967-d12e-442f-9d71-30add1e2d09e)
 <br>
 <br>
 <br>
