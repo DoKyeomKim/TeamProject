@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.resumes.mapper.ResumesMapper">
+
+<resultMap id="getResumeMap" type="java.util.HashMap">
+    <result  property="pno"        column="pno" />
+    <result  property="p_title"   column="p_title" />
+    <result  property="p_id"       column="p_id" />
+    <result  property="p_name"    column="p_name" />
+    <result  property="p_birth"      column="p_birth" />
+    <result  property="p_phone"     column="p_phone" />
+    <result  property="p_email"     column="p_email" />
+    <result  property="p_address"     column="p_address" />
+    <result  property="skill"     column="skill" />
+    <result  property="intro"     column="intro" />
+    <result  property="bookmark"     column="bookmark" />
+    <result property="imagePath" column="IMAGEPATH"/>
+  </resultMap>
+
+<select id="getPResumeList">
+	SELECT 
+	 PNO,
+	 P_ID,
+	 P_NAME,
+	 P_TITLE,
+	 skill
+	FROM P_RESUME
+	
+</select>
+
+<select id="viewResume" resultType="com.prj.recruits.domain.PResumeVo">
+    SELECT
+        PNO,
+        P_TITLE,
+        P_ID,
+        P_NAME,
+        P_BIRTH,
+        P_PHONE,
+        P_EMAIL,
+        P_ADDRESS,
+        SKILL,
+        INTRO,
+        BOOKMARK,
+        IMAGEPATH
+    FROM P_RESUME
+    WHERE PNO = #{pno}
+</select>
+
+
+
+</mapper>

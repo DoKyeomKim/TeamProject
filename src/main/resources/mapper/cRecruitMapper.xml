@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.recruits.mapper.CRecruitMapper">
+
+  <resultMap id="getRecruitMap" type="java.util.HashMap">
+    <result  property="cno"        column="cno" />
+    <result  property="c_id"       column="c_id" />
+    <result  property="c_company"   column="c_company" />
+    <result  property="c_title"    column="c_title" />
+    <result  property="skill"      column="skill" />
+    <result  property="getman"     column="getman" />
+    <result  property="c_address"     column="c_address" />
+    <result  property="c_info"     column="c_info" />
+    <result  property="c_ddate"     column="c_ddate" />
+    <result  property="bookmark"     column="bookmark" />
+    <result property="imagePath" column="IMAGEPATH"/>    
+  </resultMap>
+
+
+
+
+<select id="getRList">
+  
+    SELECT  CNO,
+			C_ID,
+			C_COMPANY,
+			C_TITLE,
+			SKILL,
+			GETMAN,
+			C_ADDRESS,
+			C_INFO,
+			C_DDATE,
+			BOOKMARK
+	  FROM  C_RECRUIT	
+  
+  </select>
+  
+  <select id="getRecruit" resultMap="getRecruitMap">
+  
+    SELECT  CNO,
+			C_ID,
+			C_COMPANY,
+			C_TITLE,
+			SKILL,
+			GETMAN,
+			C_ADDRESS,
+			C_INFO,
+			C_DDATE,
+			BOOKMARK,
+			IMAGEPATH
+	  FROM  C_RECRUIT
+	 WHERE  CNO = #{ cno } 
+  
+  </select>
+
+
+<select id="getRecruitList" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT   CNO
+			,C_ID
+	        ,C_COMPANY
+	        ,C_TITLE
+	 FROM    C_RECRUIT
+	WHERE C_ID = #{c_id}
+</select>
+
+<select id="viewRecruit" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT  
+		C_ID,
+        CNO,
+        C_COMPANY,
+        GETMAN,
+        C_TITLE,
+        SKILL,
+        C_ADDRESS,
+        C_INFO,
+        IMAGEPATH
+	 FROM   C_RECRUIT
+	 WHERE  CNO = #{cno}
+</select>
+
+<insert id="writeRecruit" parameterType="com.prj.recruits.domain.CRecruitVo">
+    INSERT INTO C_RECRUIT(
+        C_ID,
+        CNO,
+        C_COMPANY,
+        GETMAN,
+        C_TITLE,
+        SKILL,
+        C_ADDRESS,
+        C_INFO,
+        IMAGEPATH
+    )
+    VALUES(
+        #{c_id},
+        (SELECT NVL(MAX(CNO), 0) + 1 FROM C_RECRUIT),
+        #{c_company, jdbcType=VARCHAR},
+        #{getman, jdbcType=VARCHAR},
+        #{c_title, jdbcType=VARCHAR},
+        #{skill, jdbcType=VARCHAR},
+        #{c_address, jdbcType=VARCHAR},
+        #{c_info, jdbcType=VARCHAR},
+        #{imagePath}
+    )
+</insert>
+
+<select id="getUpdateRecruitByCno" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT  *
+	 FROM   C_RECRUIT
+	 WHERE  CNO = #{cno}
+</select>
+
+<update id="updateRecruit">
+	UPDATE C_RECRUIT
+	
+	 SET
+	 C_COMPANY=#{c_company, jdbcType=VARCHAR}
+	 ,C_TITLE=#{c_title, jdbcType=VARCHAR}
+	 ,GETMAN=#{getman, jdbcType=VARCHAR}
+	 ,SKILL=#{skill, jdbcType=VARCHAR}
+	 ,C_ADDRESS=#{c_address, jdbcType=VARCHAR}
+	 ,C_INFO=#{c_info, jdbcType=VARCHAR}
+	 ,IMAGEPATH=#{imagePath, jdbcType=VARCHAR}
+	 
+	
+	 WHERE CNO=#{cno}
+</update>
+
+<delete id="deleteRecruit">
+	DELETE FROM C_RECRUIT
+	 WHERE CNO=#{cno}
+</delete>
+
+
+  <select id="getRListAtHome" resultType="com.prj.recruits.domain.CRecruitVo">
+	SELECT   CNO
+			,C_ID
+	        ,C_COMPANY
+	        ,C_TITLE
+	        ,IMAGEPATH
+	FROM    C_RECRUIT
+  </select>
+
+</mapper>

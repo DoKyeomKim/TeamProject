@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.reviewboard.mapper.ReviewBoardMapper">
+
+  <select id="getReviewList"> 
+  
+    SELECT  COMU_ID,
+    		RNO,
+			NAME,
+			TITLE,
+			CONTENT,
+			STAR
+	  FROM  REVIEWBOARD
+  
+  </select>
+  
+  <select id="getComuList">
+  
+    SELECT  COMU_ID,
+			COMU_NAME
+	  FROM	COMU
+  
+  </select>
+  
+  <insert id="insertReview">
+  
+    INSERT  INTO  REVIEWBOARD (
+    	COMU_ID,
+		RNO,
+		NAME,
+		TITLE,
+		CONTENT,
+		STAR
+    )
+    VALUES (
+    	'COMU01',
+		(SELECT NVL(MAX(RNO), 0) + 1 FROM REVIEWBOARD),
+		#{ name },
+		#{ title },
+		#{ content },
+		#{ star }
+    )
+  
+  </insert>
+  
+  <select id="getFreeList">
+  
+    SELECT  COMU_ID,
+			FNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	FREEBOARD	
+  
+  </select>
+  
+  <insert id="insertFree">
+  
+    INSERT  INTO  FREEBOARD (
+    	COMU_ID,
+		FNO,
+		NAME,
+		TITLE,
+		CONTENT
+    )
+    VALUES (
+    	'COMU02',
+    	(SELECT NVL(MAX(FNO), 0) + 1 FROM FREEBOARD),
+    	#{ name },
+    	#{ title },
+    	#{ content }
+    )
+  
+  </insert>
+  
+  <select id="getReview">
+  
+    SELECT  COMU_ID,
+			RNO,
+			NAME,
+			TITLE,
+			CONTENT,
+			STAR
+	  FROM  REVIEWBOARD
+	 WHERE  RNO = #{ rno } 
+  
+  </select>
+  
+  <select id="getFree">
+  
+    SELECT  COMU_ID,
+			FNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	FREEBOARD
+	 WHERE  FNO = #{ fno }
+  
+  </select>
+  
+  <update id="updateFree">
+  
+    UPDATE  FREEBOARD
+       SET  TITLE = #{ title },
+       		CONTENT = #{ content },
+       		NAME = #{name}
+     WHERE  FNO = #{ fno }
+  
+  </update>
+  
+  <update id="updateReview">
+  
+    UPDATE  REVIEWBOARD
+       SET  TITLE = #{ title },
+            STAR = #{ star },
+            NAME = #{name},
+            CONTENT = #{ content }
+     WHERE  RNO = #{ rno }
+  
+  </update>
+  
+  <delete id="deleteReview">
+  
+    DELETE  FROM  REVIEWBOARD
+     WHERE  RNO = #{ rno }
+  
+  </delete>
+  
+  <delete id="deleteFree">
+  
+    DELETE  FROM  FREEBOARD
+     WHERE  FNO = #{ fno }
+  
+  </delete>
+  
+   
+  <select id="getServiceList">
+  
+    SELECT  SNO,
+			NAME,
+			TITLE,
+			CONTENT
+	  FROM	SERVICEBOARD
+  
+  </select>
+  
+  <select id="getServiceView">
+  
+      SELECT 	SNO,
+				NAME,
+				TITLE,
+				CONTENT
+	    FROM	SERVICEBOARD
+	   WHERE	SNO = #{ sno } 
+  
+  </select>
+  
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
