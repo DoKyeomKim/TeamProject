@@ -11,7 +11,7 @@
 <li>JDK 17</li>
 <li>Oracle SQL DB</li>
 <li>MyBatis</li>
-<li>Spring Boot 4.22.0</li>
+<li>Spring Boot</li>
 <li>JSP</li>
 <li>JavaSript</li>
 <li>HTML</li>
